@@ -86,7 +86,7 @@ const MobileHerosection = () => {
                   />
                   <span className="font-bold text-xl">{product.name}</span>
                   <Link
-                    href={`/${categoryLink}/${link}`}
+                    href={`/${link}`}
                     className="w-fit px-6 text-white rounded-full bg-primary py-2 text-[15px] duration-500 transition-all"
                   >
                     View Price & Calories

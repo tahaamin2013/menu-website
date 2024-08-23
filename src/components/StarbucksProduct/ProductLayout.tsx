@@ -79,7 +79,7 @@ const ProductLayout = ({ subItem, delay }: any) => {
     <div className="flex gap-8 flex-col mb-8 md:mb-1 md:flex-row ">
       <div className="flex flex-row mb-6 items-center gap-5">
         <Link
-          href={`/${categoryUrl}/${link}`}
+          href={`//${link}`}
           aria-label={`Starbucks ${productName}`}
         >
           <Image
@@ -94,7 +94,7 @@ const ProductLayout = ({ subItem, delay }: any) => {
         </Link>
         <div>
           <Link
-            href={`/${categoryUrl}/${link}`}
+            href={`/${link}`}
             aria-label={`Starbucks ${productName}`}
           >
             {" "}
@@ -102,7 +102,7 @@ const ProductLayout = ({ subItem, delay }: any) => {
           </Link>
           <div className="w-44 flex gap-6 justify-between items-center">
             <Link
-              href={`/${categoryUrl}/${link}`}
+              href={`/${link}`}
               aria-label={`Starbucks ${productName}`}
             >
               <div className="h-full gap-1 font-bold flex justify-between flex-col">
@@ -160,7 +160,7 @@ const ProductLayout = ({ subItem, delay }: any) => {
               ) : null}
               {hasSizes && selectedSize ? (
                 <Link
-                  href={`/${categoryUrl}/${link}`}
+                  href={`/${link}`}
                   aria-label={`Starbucks ${productName}`}
                 >
                   <span>{selectedSize.size2}</span>
@@ -169,7 +169,7 @@ const ProductLayout = ({ subItem, delay }: any) => {
                 </Link>
               ) : (
                 <Link
-                  href={`/${categoryUrl}/${link}`}
+                  href={`/${link}`}
                   aria-label={`Starbucks ${productName}`}
                 >
                   {subItem.calories !== undefined && <p>{subItem.calories}</p>}

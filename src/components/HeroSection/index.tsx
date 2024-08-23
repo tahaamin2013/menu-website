@@ -176,7 +176,7 @@ const HeroSection = () => {
         <div className="flex relative overflow-hidden bg-white  w-full  justify-between pl-[94px] py-[40px]">
           <div className="text-center z-50 flex flex-col items-center justify-center gap-3">
             <div className="ml-0 md:mt-0 mt-5 md:ml-6">
-              <Link href={`/${categoryLink}/${link}`}>
+              <Link href={`/${link}`}>
                 <Image
                   className="rounded-full max-w-[200px] md:max-w-[280px] shadow-glow shadow-primary"
                   src={selectedProduct.image}
@@ -188,13 +188,13 @@ const HeroSection = () => {
               </Link>
             </div>
             <div className="mt-2 flex w-full items-center justify-center flex-col">
-              <Link href={`/${categoryLink}/${link}`}>
+              <Link href={`/${link}`}>
                 <span className="font-bold max-w-xs mb-3 text-xl lg:text-2xl line-clamp-2 h-[60px]">
                   {selectedProduct.name}
                 </span>
               </Link>
               <div className="flex flex-col gap-2">
-                <Link href={`/${categoryLink}/${link}`}>
+                <Link href={`/${link}`}>
                   <Button className="text-white rounded-full duration-500 transition-all text-sm lg:text-base">
                     View Price & Calories
                   </Button>
@@ -206,9 +206,8 @@ const HeroSection = () => {
           <div className="flex z-50 flex-col items-center justify-center">
             <button
               onClick={handlePreviousSlide}
-              className={`mb-2 ${
-                canScrollPrev ? "bg-primary hover:bg-primary/80" : "bg-gray-300"
-              } rounded-full`}
+              className={`mb-2 ${canScrollPrev ? "bg-primary hover:bg-primary/80" : "bg-gray-300"
+                } rounded-full`}
               disabled={!canScrollPrev}
             >
               <ArrowRight className="h-6 lg:h-8 text-white w-6 lg:w-8 p-1 lg:p-2 -rotate-90" />
@@ -240,11 +239,10 @@ const HeroSection = () => {
                     >
                       <button
                         onClick={() => handleProductClick(product, index)}
-                        className={`${
-                          product === selectedProduct
-                            ? "bg-primary text-white"
-                            : "bg-white"
-                        } w-full text-left text-sm lg:text-xl shadow-lg flex gap-2 lg:gap-3 rounded-r items-center rounded-full px-2 lg:px-4 py-1 lg:py-2`}
+                        className={`${product === selectedProduct
+                          ? "bg-primary text-white"
+                          : "bg-white"
+                          } w-full text-left text-sm lg:text-xl shadow-lg flex gap-2 lg:gap-3 rounded-r items-center rounded-full px-2 lg:px-4 py-1 lg:py-2`}
                       >
                         <Image
                           className="rounded-full w-10 h-10 lg:w-[100px] lg:h-[100px]"
@@ -263,9 +261,8 @@ const HeroSection = () => {
             </div>
             <button
               onClick={handleNextSlide}
-              className={`mt-4 ${
-                canScrollNext ? "bg-primary hover:bg-primary/80" : "bg-gray-300"
-              } rounded-full`}
+              className={`mt-4 ${canScrollNext ? "bg-primary hover:bg-primary/80" : "bg-gray-300"
+                } rounded-full`}
               disabled={!canScrollNext}
             >
               <ArrowRight className="h-6 lg:h-8 text-white w-6 lg:w-8 p-1 lg:p-2 rotate-90" />

@@ -31,7 +31,7 @@ const ProductContent = ({ subItem, delay }: any) => {
   // Find the "Tall" size, or default to the first size in the array
   const initialSize = hasSizes
     ? subItem.sizes.find((sizeOption: any) => sizeOption.size === "Tall") ||
-      subItem.sizes[0]
+    subItem.sizes[0]
     : null;
 
   const [selectedSize, setSelectedSize] = useState(initialSize);
