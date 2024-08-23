@@ -3,34 +3,34 @@ import { allBlogs } from "contentlayer/generated";
 import siteMetadata from "@/src/utils/siteMetaData";
 import { ISitemapField } from "next-sitemap";
 
-const allowedArticleRoutes = [
-  "bakery",
-  "bottled-beverages",
-  "cold-coffees",
-  "cold-cups",
-  "frappuccino-blended-beverages",
-  "hot-breakfast",
-  "hot-coffees",
-  "hot-teas",
-  "iced-tea-and-lemonade",
-  "lunch",
-  "milk-juice-and-more",
-  "mugs",
-  "oatmeal-and-yogurt",
-  "other",
-  "snacks-and-sweets",
-  "starbucks-refreshers-beverages",
-  "tumblers",
-  "via-instant",
-  "water-bottles",
-  "whole-bean",
-];
+// const allowedArticleRoutes = [
+//   "bakery",
+//   "bottled-beverages",
+//   "cold-coffees",
+//   "cold-cups",
+//   "frappuccino-blended-beverages",
+//   "hot-breakfast",
+//   "hot-coffees",
+//   "hot-teas",
+//   "iced-tea-and-lemonade",
+//   "lunch",
+//   "milk-juice-and-more",
+//   "mugs",
+//   "oatmeal-and-yogurt",
+//   "other",
+//   "snacks-and-sweets",
+//   "starbucks-refreshers-beverages",
+//   "tumblers",
+//   "via-instant",
+//   "water-bottles",
+//   "whole-bean",
+// ];
 
 export async function GET() {
   const articleFields: ISitemapField[] = allBlogs
     .filter((blog) => {
       const [category] = blog._raw.flattenedPath.split("/");
-      return allowedArticleRoutes.includes(category);
+      // return allowedArticleRoutes.includes(category);
     })
     .map((blog) => {
       const [category, slug] = blog._raw.flattenedPath.split("/");
