@@ -27,7 +27,7 @@ const ProfileSection = () => {
               growing passion for writing. With a strong background in finance
               and digital marketing, Amin brings a unique perspective to his
               work. He has recently embarked on a new journey as a writer for
-              <Link href="/https://www.starbucks-menu-with-prices.net/" target="_blank" className='underline font-bold text-green-700'>starbucks-menu-with-prices.net</Link>, where he combines his analytical skills with his
+              <Link href="https://www.starbucks-menu-with-prices.net/" target="_blank" className='underline ml-1 font-bold text-green-700'>starbucks-menu-with-prices.net</Link>, where he combines his analytical skills with his
               love for clear, engaging content.
             </p>
             <p className=" text-sm text-justify text-gray-600  pt-3 font-normal mt-2">
