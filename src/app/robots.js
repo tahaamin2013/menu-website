@@ -6,9 +6,9 @@ export default function robots() {
         allow: '/',
       }
     ],
-    sitemap: 'https://starbmenu.com/sitemap-0.xml',
+    sitemap: 'https://starbucks-menu-with-prices.net/sitemap-0.xml',
     additionalSitemaps: [
-      { url: 'https://starbmenu.com/sitemap-0.xml', comment: 'Please crawl this site every 5 days' },
+      { url: 'https://starbucks-menu-with-prices.net/sitemap-0.xml', comment: 'Please crawl this site every 5 days' },
     ],
   }
 }

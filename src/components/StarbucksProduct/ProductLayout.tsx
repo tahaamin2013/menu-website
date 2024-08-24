@@ -38,7 +38,7 @@ const ProductLayout = ({ subItem, delay }: any) => {
 
   const initialSize = hasSizes
     ? subItem.sizes.find((sizeOption: any) => sizeOption.size === "Tall") ||
-      subItem.sizes[0]
+    subItem.sizes[0]
     : null;
 
   const [selectedSize, setSelectedSize] = useState(initialSize);
@@ -79,7 +79,7 @@ const ProductLayout = ({ subItem, delay }: any) => {
     <div className="flex gap-8 flex-col mb-8 md:mb-1 md:flex-row ">
       <div className="flex flex-row mb-6 items-center gap-5">
         <Link
-          href={`//${link}`}
+          href={`/${link}`}
           aria-label={`Starbucks ${productName}`}
         >
           <Image

@@ -27,7 +27,7 @@ const ProfileSection = () => {
               growing passion for writing. With a strong background in finance
               and digital marketing, Amin brings a unique perspective to his
               work. He has recently embarked on a new journey as a writer for
-              starbmenu.com, where he combines his analytical skills with his
+              starbucks-menu-with-prices.net, where he combines his analytical skills with his
               love for clear, engaging content.
             </p>
             <p className=" text-sm text-justify text-gray-600  pt-3 font-normal mt-2">

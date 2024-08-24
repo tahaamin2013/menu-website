@@ -12,7 +12,8 @@ export const metadata: Metadata = {
   description: siteMetadata.description,
   openGraph: {
     title: siteMetadata.title,
-    description: siteMetadata.description,},
+    description: siteMetadata.description,
+  },
   twitter: {
     card: 'summary_large_image',
   },
@@ -31,12 +32,12 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "StarbMenu",
-    "url": "https://starbmenu.com/",
+    "url": "https://starbucks-menu-with-prices.net/",
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://starbmenu.com/"
+        "urlTemplate": "https://starbucks-menu-with-prices.net/"
       },
       "query-input": "required name=search_term_string"
     },
@@ -46,13 +47,13 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="theme-color" content="#0b7555" />
-        <meta property="og:image" content="https://starbmenu.com/opengraph-image.png" />
-        <link 
-          rel="canonical" 
-          href={`${siteMetadata.siteUrl}${typeof window !== 'undefined' ? window.location.pathname : ''}`} 
+        <meta property="og:image" content="https://starbucks-menu-with-prices.net/opengraph-image.png" />
+        <link
+          rel="canonical"
+          href={`${siteMetadata.siteUrl}${typeof window !== 'undefined' ? window.location.pathname : ''}`}
         />
-        <Script 
-          id="schema-markup" 
+        <Script
+          id="schema-markup"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         />
