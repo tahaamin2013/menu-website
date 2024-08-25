@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, Category, Item, SubItem, Product } from "@/lib/menuItems";
 import {
@@ -24,6 +24,21 @@ const MenuPage: React.FC = () => {
     "categories" | "items" | "subitems"
   >("categories");
   const [isTablet, setIsTablet] = useState<boolean>(false);
+  const [expandedItem, setExpandedItem] = useState<string | null>(null);
+  const itemRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+
+  const toggleAccordion = (itemName: string) => {
+    if (expandedItem === itemName) {
+      // If closing, first set expanded to null to close the accordion
+      setExpandedItem(null);
+      // Then scroll to the item's position after a short delay
+      setTimeout(() => {
+        itemRefs.current[itemName]?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    } else {
+      setExpandedItem(itemName);
+    }
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -76,7 +91,6 @@ const MenuPage: React.FC = () => {
   const TabletMenu = () => {
     return (
       <div className="bg-white min-h-screen text-green-800">
-     
         <div className="flex">
           <div className="w-1/3 p-4 border-r border-green-200">
             {Menu.find((c) => c.category === activeCategory)?.items.map((item) => (
@@ -120,8 +134,6 @@ const MenuPage: React.FC = () => {
   };
 
   const MobileMenu = () => {
-    const [expandedItem, setExpandedItem] = useState<string | null>(null);
-
     return (
       <div className="sm:hidden bg-white min-h-screen text-green-800">
         <div className="sticky top-0 z-10 bg-green-700 shadow-lg">
@@ -188,73 +200,70 @@ const MenuPage: React.FC = () => {
         </div>
 
         <div className="pt-4">
-          {Menu.find((c) => c.category === activeCategory)?.items.map(
-            (item, index) => (
-              <motion.div
-                key={item.name}
-                className="mb-4 bg-green-100 rounded-lg shadow-lg"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+        {Menu.find((c) => c.category === activeCategory)?.items.map(
+          (item, index) => (
+            <motion.div
+              key={item.name}
+              className="mb-4 bg-green-100 rounded-lg shadow-lg"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              ref={(el) => (itemRefs.current[item.name] = el)}
+            >
+              <motion.button
+                className="sticky top-[140px] w-full p-4 text-left text-lg font-medium text-green-800 flex justify-between items-center bg-green-100"
+                onClick={() => toggleAccordion(item.name)}
               >
-                <motion.button
-                  className="sticky top-[140px] w-full p-4 text-left text-lg font-medium text-green-800 flex justify-between items-center bg-green-100"
-                  onClick={() =>
-                    setExpandedItem(
-                      expandedItem === item.name ? null : item.name
-                    )
-                  }
+                {item.name}
+                <motion.div
+                  animate={{ rotate: expandedItem === item.name ? 90 : 0 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  {item.name}
+                  <ChevronLeft size={20} />
+                </motion.div>
+              </motion.button>
+              <AnimatePresence>
+                {expandedItem === item.name && (
                   <motion.div
-                    animate={{ rotate: expandedItem === item.name ? 90 : 0 }}
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
+                    className="overflow-hidden bg-white"
                   >
-                    <ChevronLeft size={20} />
+                    {item.subItems.map((subItem) => (
+                      <div
+                        key={subItem.category}
+                        className="py-4 border-t border-green-200"
+                      >
+                        <h3 className="font-medium text-green-700 mb-3">
+                          {subItem.category}
+                        </h3>
+                        {subItem.products.map((product) => (
+                          <motion.div
+                            key={product.name}
+                            className="bg-green-50 pt-5 rounded-lg shadow-md mb-4"
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.98 }}
+                          >
+                            <ProductLayout subItem={product} />
+                          </motion.div>
+                        ))}
+                      </div>
+                    ))}
                   </motion.div>
-                </motion.button>
-                <AnimatePresence>
-                  {expandedItem === item.name && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden bg-white"
-                    >
-                      {item.subItems.map((subItem) => (
-                        <div
-                          key={subItem.category}
-                          className="py-4 border-t border-green-200"
-                        >
-                          <h3 className="font-medium text-green-700 mb-3">
-                            {subItem.category}
-                          </h3>
-                          {subItem.products.map((product) => (
-                            <motion.div
-                              key={product.name}
-                              className="bg-green-50 pt-5 rounded-lg shadow-md mb-4"
-                              whileHover={{ scale: 1.03 }}
-                              whileTap={{ scale: 0.98 }}
-                            >
-                              <ProductLayout subItem={product} />
-                            </motion.div>
-                          ))}
-                        </div>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            )
-          )}
+                )}
+              </AnimatePresence>
+            </motion.div>
+          )
+        )}
         </div>
       </div>
     );
   };
 
   return (
-    <div className="">
+    <div id="Menu">
       {/* Desktop Navigation */}
       <div className="hidden sm:block bg-white shadow-md sticky top-0 z-10">
         <div className="flex xl:flex-col flex-row justify-between items-center">
@@ -378,8 +387,8 @@ const MenuPage: React.FC = () => {
         </AnimatePresence>
       </div>
 
-  {/* Tablet Navigation */}
-  <div className="hidden md:block lg:hidden">
+      {/* Tablet Navigation */}
+      <div className="hidden md:block lg:hidden">
         <TabletMenu />
       </div>
 
