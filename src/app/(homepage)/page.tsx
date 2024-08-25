@@ -257,7 +257,7 @@ const MenuPage: React.FC = () => {
     <div className="">
       {/* Desktop Navigation */}
       <div className="hidden sm:block bg-white shadow-md sticky top-0 z-10">
-        <div className="flex sm:flex-col flex-row justify-between items-center">
+        <div className="flex xl:flex-col flex-row justify-between items-center">
           {/* Category Tabs */}
           <nav className="px-4 py-3 overflow-x-auto whitespace-nowrap border-b border-gray-200">
             <div className="flex justify-center space-x-3">
