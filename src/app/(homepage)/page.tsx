@@ -23,6 +23,18 @@ const MenuPage: React.FC = () => {
   const [mobileView, setMobileView] = useState<
     "categories" | "items" | "subitems"
   >("categories");
+  const [isTablet, setIsTablet] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsTablet(window.innerWidth >= 768 && window.innerWidth < 1024);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     filterProducts(activeCategory);
@@ -61,11 +73,57 @@ const MenuPage: React.FC = () => {
     setFilteredProducts(filtered);
   };
 
+  const TabletMenu = () => {
+    return (
+      <div className="bg-white min-h-screen text-green-800">
+     
+        <div className="flex">
+          <div className="w-1/3 p-4 border-r border-green-200">
+            {Menu.find((c) => c.category === activeCategory)?.items.map((item) => (
+              <motion.button
+                key={item.name}
+                className={`w-full p-3 text-left text-lg font-medium mb-2 rounded-lg ${
+                  activeItem === item.name
+                    ? "bg-green-100 text-green-800"
+                    : "text-green-700 hover:bg-green-50"
+                }`}
+                onClick={() => {
+                  setActiveItem(item.name);
+                  if (item.subItems.length > 0) {
+                    setActiveSubItem(item.subItems[0].category);
+                    setFilteredProducts(item.subItems[0].products);
+                  }
+                }}
+              >
+                {item.name}
+              </motion.button>
+            ))}
+          </div>
+          <div className="w-2/3 p-4">
+            <h2 className="text-2xl font-bold mb-4 text-green-800">{activeItem}</h2>
+            <div className="">
+              {filteredProducts.map((product, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <ProductLayout subItem={product} />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   const MobileMenu = () => {
     const [expandedItem, setExpandedItem] = useState<string | null>(null);
 
     return (
-      <div className="md:hidden bg-white min-h-screen text-green-800">
+      <div className="sm:hidden bg-white min-h-screen text-green-800">
         <div className="sticky top-0 z-10 bg-green-700 shadow-lg">
           <div className="flex justify-between items-center p-4">
             <motion.h1
@@ -134,13 +192,13 @@ const MenuPage: React.FC = () => {
             (item, index) => (
               <motion.div
                 key={item.name}
-                className="mb-4 mx-4 bg-green-100 rounded-lg shadow-lg"
+                className="mb-4 bg-green-100 rounded-lg shadow-lg"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <motion.button
-                  className="sticky top-[120px] w-full p-4 text-left text-lg font-medium text-green-800 flex justify-between items-center bg-green-100"
+                  className="sticky top-[140px] w-full p-4 text-left text-lg font-medium text-green-800 flex justify-between items-center bg-green-100"
                   onClick={() =>
                     setExpandedItem(
                       expandedItem === item.name ? null : item.name
@@ -167,7 +225,7 @@ const MenuPage: React.FC = () => {
                       {item.subItems.map((subItem) => (
                         <div
                           key={subItem.category}
-                          className="p-4 border-t border-green-200"
+                          className="py-4 border-t border-green-200"
                         >
                           <h3 className="font-medium text-green-700 mb-3">
                             {subItem.category}
@@ -175,7 +233,7 @@ const MenuPage: React.FC = () => {
                           {subItem.products.map((product) => (
                             <motion.div
                               key={product.name}
-                              className="bg-green-50 pt-5 px-5 rounded-lg shadow-md mb-4"
+                              className="bg-green-50 pt-5 rounded-lg shadow-md mb-4"
                               whileHover={{ scale: 1.03 }}
                               whileTap={{ scale: 0.98 }}
                             >
@@ -198,8 +256,8 @@ const MenuPage: React.FC = () => {
   return (
     <div className="">
       {/* Desktop Navigation */}
-      <div className="hidden md:block bg-white shadow-md sticky top-0 z-10">
-        <div className="flex justify-between items-center">
+      <div className="hidden sm:block bg-white shadow-md sticky top-0 z-10">
+        <div className="flex sm:flex-col flex-row justify-between items-center">
           {/* Category Tabs */}
           <nav className="px-4 py-3 overflow-x-auto whitespace-nowrap border-b border-gray-200">
             <div className="flex justify-center space-x-3">
@@ -320,13 +378,18 @@ const MenuPage: React.FC = () => {
         </AnimatePresence>
       </div>
 
+  {/* Tablet Navigation */}
+  <div className="hidden md:block lg:hidden">
+        <TabletMenu />
+      </div>
+
       {/* Mobile Navigation */}
       <div className="md:hidden">
         <MobileMenu />
       </div>
 
       {/* Product Grid */}
-      <div className="sm:block hidden container mx-auto px-4 py-8">
+      <div className="lg:block hidden container mx-auto px-4 py-8">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}

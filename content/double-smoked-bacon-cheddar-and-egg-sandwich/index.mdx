@@ -69,6 +69,36 @@ Remember, while it's delicious, it's also high in calories. Enjoy it as part of 
 Next time you're at Starbucks, why not try the Double-Smoked Bacon, Cheddar & Egg Sandwich? It's a tasty way to start your day or fuel up any time you need a hearty meal.
 
 
+<style jsx>{`
+  .table-container {
+    overflow-x: auto;
+    position: relative;
+  }
+  .table-container table {
+    border-collapse: collapse;
+    width: 80%;
+  }
+  .table-container th,
+  .table-container td {
+    border: 1px solid #ddd;
+    padding: 2px;
+    min-width: 30px;
+    font-size: 11px;
+  }
+  .table-container th:first-child,
+  .table-container td:first-child {
+    position: sticky;
+    left: 0;
+    background-color: white;
+    z-index: 1;
+  }
+  @media (max-width: 768px) {
+    .table-container th:not(:first-child),
+    .table-container td:not(:first-child) {
+      min-width: 50px;
+    }
+  }
+`}</style>
   <style jsx>{`
     @media (min-width: 768px) {
       .responsive-grid {

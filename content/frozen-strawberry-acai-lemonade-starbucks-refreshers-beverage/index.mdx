@@ -88,6 +88,36 @@ The Strawberry Açaí Lemonade does contain some caffeine, but it's much less th
 
 So next time you're at Starbucks and feeling the heat, why not give the Frozen Strawberry Açaí Lemonade Refresher a try? It might become your new favorite summer drink!
 
+<style jsx>{`
+  .table-container {
+    overflow-x: auto;
+    position: relative;
+  }
+  .table-container table {
+    border-collapse: collapse;
+    width: 80%;
+  }
+  .table-container th,
+  .table-container td {
+    border: 1px solid #ddd;
+    padding: 2px;
+    min-width: 30px;
+    font-size: 11px;
+  }
+  .table-container th:first-child,
+  .table-container td:first-child {
+    position: sticky;
+    left: 0;
+    background-color: white;
+    z-index: 1;
+  }
+  @media (max-width: 768px) {
+    .table-container th:not(:first-child),
+    .table-container td:not(:first-child) {
+      min-width: 50px;
+    }
+  }
+`}</style>
   <style jsx>{`
     @media (min-width: 768px) {
       .responsive-grid {

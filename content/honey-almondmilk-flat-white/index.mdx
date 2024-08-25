@@ -70,6 +70,36 @@ The Starbucks Honey Almondmilk Flat White is a tasty, not-too-sweet drink that's
 
 General nutrition advice uses 2,000 calories a day, but calorie needs vary.
 
+<style jsx>{`
+  .table-container {
+    overflow-x: auto;
+    position: relative;
+  }
+  .table-container table {
+    border-collapse: collapse;
+    width: 80%;
+  }
+  .table-container th,
+  .table-container td {
+    border: 1px solid #ddd;
+    padding: 2px;
+    min-width: 30px;
+    font-size: 11px;
+  }
+  .table-container th:first-child,
+  .table-container td:first-child {
+    position: sticky;
+    left: 0;
+    background-color: white;
+    z-index: 1;
+  }
+  @media (max-width: 768px) {
+    .table-container th:not(:first-child),
+    .table-container td:not(:first-child) {
+      min-width: 50px;
+    }
+  }
+`}</style>
   <style jsx>{`
     @media (min-width: 768px) {
       .responsive-grid {
