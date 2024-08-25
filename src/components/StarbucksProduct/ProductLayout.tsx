@@ -76,7 +76,7 @@ const ProductLayout = ({ subItem, delay }: any) => {
   const categoryUrl = toUrlFriendly(category);
 
   return (
-    <div className="flex gap-8 flex-col mb-8 md:mb-1 md:flex-row ">
+    <div className="flex gap-8 z-0 flex-col mb-8 md:mb-1 md:flex-row ">
       <div className="flex flex-row mb-6 items-center gap-5">
         <Link
           href={`/${link}`}

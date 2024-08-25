@@ -33,16 +33,18 @@ export default function RootLayout({
         <meta name="theme-color" content="#0b7555" />
       </head>
       <body className={inter.className}>
-        <Navbar />
-        <HeroSection />
-        <main>
-          <SubMenu />
-          <div className="flex px-5 md:px-[60px] my-9">
-            <Sidebar />
-            <div className="w-full">{children}</div>
-          </div>
-        </main>
-        <Footer />
+        {/* <Loader> */}
+          <Navbar />
+          <HeroSection />
+          <main>
+            {/* <SubMenu /> */}
+            <div className="flex px-5 md:px-[60px] my-9">
+              {/* <Sidebar /> */}
+              <div className="w-full">{children}</div>
+            </div>
+          </main>
+          <Footer />
+        {/* </Loader> */}
       </body>
     </html>
   );

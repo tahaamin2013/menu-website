@@ -1,219 +1,354 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Menu } from "@/lib/menuItems";
-import { Search, X } from "lucide-react";
-import CategoryLayout from "../../components/StarbucksProduct/CategoryLayout";
-import { Input } from "@/src/components/ui/input";
-import ProductLayout from "../../components/StarbucksProduct/ProductLayout";
-import { Skeleton } from "@/src/components/ui/skeleton";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, Category, Item, SubItem, Product } from "@/lib/menuItems";
+import {
+  Search,
+  X,
+  Menu as MenuIcon,
+  ChevronLeft,
+  ArrowLeft,
+} from "lucide-react";
+import Link from "next/link";
+import ProductLayout from "@/src/components/StarbucksProduct/ProductLayout";
 
-const MenuPage = () => {
+const MenuPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [filteredMenu, setFilteredMenu] = useState<any[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [totalCount, setTotalCount] = useState<number>(0);
+  const [activeCategory, setActiveCategory] = useState<string>("Drinks");
+  const [activeItem, setActiveItem] = useState<string>("");
+  const [activeSubItem, setActiveSubItem] = useState<string>("");
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+  const [mobileView, setMobileView] = useState<
+    "categories" | "items" | "subitems"
+  >("categories");
 
   useEffect(() => {
-    const calculateTotalCount = (menu: any[]) => {
-      let total = 0;
-      menu.forEach((category) => {
-        const itemCount = category.items?.length || 0;
-        const subItemCount =
-          category.items?.reduce(
-            (acc: number, item: any) => acc + (item.subItems?.length || 0),
-            0
-          ) || 0;
-        total += itemCount + subItemCount;
-      });
-      return total;
-    };
-
-    const initialTotalCount = calculateTotalCount(Menu);
-    setTotalCount(initialTotalCount);
-    setFilteredMenu(Menu);
-    setLoading(false);
+    filterProducts(activeCategory);
   }, []);
 
-  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const query = event.target.value.toLowerCase();
-    setSearchQuery(query);
-
-    if (query === "") {
-      setFilteredMenu(Menu);
-      setTotalCount(
-        Menu.reduce((acc, category) => {
-          const itemCount = category.items?.length || 0;
-          const subItemCount =
-            category.items?.reduce(
-              (acc, item) => acc + (item.subItems?.length || 0),
-              0
-            ) || 0;
-          return acc + itemCount + subItemCount;
-        }, 0)
-      );
+  const filterProducts = (category: string) => {
+    const categoryData = Menu.find((item) => item.category === category);
+    if (categoryData && categoryData.items.length > 0) {
+      setActiveItem(categoryData.items[0].name);
+      if (categoryData.items[0].subItems.length > 0) {
+        setActiveSubItem(categoryData.items[0].subItems[0].category);
+        setFilteredProducts(categoryData.items[0].subItems[0].products);
+      } else {
+        setActiveSubItem("");
+        setFilteredProducts([]);
+      }
     } else {
-      const filteredItems = Menu.map((category) => {
-        if (!category || !category.category) {
-          return null;
-        }
-
-        const filteredCategoryItems = category.items.filter((item) => {
-          if (!item || !item.name) {
-            return false;
-          }
-          return item.name.toLowerCase().includes(query);
-        });
-
-        const filteredSubItems = category.items.reduce(
-          (acc: any, curr: any) => {
-            if (curr.subItems) {
-              const filteredSubItems = curr.subItems.reduce(
-                (subAcc: any, subItem: any) => {
-                  if (!subItem || !subItem.products) {
-                    return subAcc;
-                  }
-                  const filteredItems = subItem.products.filter(
-                    (subSubItem: any) => {
-                      if (!subSubItem || !subSubItem.name) {
-                        return false;
-                      }
-                      return subSubItem.name.toLowerCase().includes(query);
-                    }
-                  );
-                  if (filteredItems.length > 0) {
-                    return [...subAcc, { ...subItem, products: filteredItems }];
-                  }
-                  return subAcc;
-                },
-                []
-              );
-              return [...acc, ...filteredSubItems];
-            }
-            return acc;
-          },
-          []
-        );
-
-        if (filteredCategoryItems.length > 0 || filteredSubItems.length > 0) {
-          return {
-            ...category,
-            items: filteredCategoryItems,
-            subItems: filteredSubItems,
-          };
-        }
-
-        return null;
-      }).filter((category) => category !== null);
-
-      setFilteredMenu(filteredItems);
+      setActiveItem("");
+      setActiveSubItem("");
+      setFilteredProducts([]);
     }
   };
 
-  const clearSearch = () => {
-    setSearchQuery("");
-    setFilteredMenu(Menu);
-    setTotalCount(
-      Menu.reduce((acc, category) => {
-        const itemCount = category.items?.length || 0;
-        const subItemCount =
-          category.items?.reduce(
-            (acc, item) => acc + (item.subItems?.length || 0),
-            0
-          ) || 0;
-        return acc + itemCount + subItemCount;
-      }, 0)
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+    const lowercaseQuery = query.toLowerCase();
+    const filtered = Menu.flatMap((category) =>
+      category.items.flatMap((item) =>
+        item.subItems.flatMap((subItem) =>
+          subItem.products.filter((product) =>
+            product.name.toLowerCase().includes(lowercaseQuery)
+          )
+        )
+      )
+    );
+    setFilteredProducts(filtered);
+  };
+
+
+  
+  const MobileMenu = () => {
+    const [expandedItem, setExpandedItem] = useState<string | null>(null);
+
+    return (
+      <div className="md:hidden bg-white min-h-screen text-green-800">
+        <div className="sticky top-0 z-10 bg-green-700 shadow-lg">
+          <div className="flex justify-between items-center p-4">
+            <motion.h1
+              className="text-2xl font-bold text-white"
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              Starbucks Menu
+            </motion.h1>
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search..."
+                className="w-40 px-4 py-2 rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-green-500 text-green-800 placeholder-green-500 text-sm"
+                value={searchQuery}
+                onChange={(e) => handleSearch(e.target.value)}
+              />
+              {searchQuery ? (
+                <motion.button
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  onClick={() => handleSearch("")}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-700"
+                >
+                  <X size={16} />
+                </motion.button>
+              ) : (
+                <Search
+                  size={16}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-green-700"
+                />
+              )}
+            </div>
+          </div>
+
+          <motion.div
+            className="flex justify-between px-4 py-3 overflow-x-auto whitespace-nowrap"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            {["Drinks", "Foods", "At Home Coffee", "Merchandise"].map((tab) => (
+              <motion.button
+                key={tab}
+                className={`text-sm font-medium px-3 py-1 rounded-full ${
+                  activeCategory === tab
+                    ? "bg-white text-green-700"
+                    : "bg-green-600 text-white"
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  setActiveCategory(tab);
+                  filterProducts(tab);
+                }}
+              >
+                {tab}
+              </motion.button>
+            ))}
+          </motion.div>
+        </div>
+
+        <div className="pt-4">
+          {Menu.find((c) => c.category === activeCategory)?.items.map(
+            (item, index) => (
+              <motion.div
+                key={item.name}
+                className="mb-4 mx-4 bg-green-100 rounded-lg shadow-lg"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+              <motion.button
+                  className="sticky top-[120px] w-full p-4 text-left text-lg font-medium text-green-800 flex justify-between items-center bg-green-100"
+                  onClick={() =>
+                    setExpandedItem(
+                      expandedItem === item.name ? null : item.name
+                    )
+                  }
+                >
+                  {item.name}
+                  <motion.div
+                    animate={{ rotate: expandedItem === item.name ? 90 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <ChevronLeft size={20} />
+                  </motion.div>
+                </motion.button>
+                <AnimatePresence>
+                  {expandedItem === item.name && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden bg-white"
+                    >
+                      {item.subItems.map((subItem) => (
+                        <div
+                          key={subItem.category}
+                          className="p-4 border-t border-green-200"
+                        >
+                          <h3 className="font-medium text-green-700 mb-3">
+                            {subItem.category}
+                          </h3>
+                          {subItem.products.map((product) => (
+                            <motion.div
+                              key={product.name}
+                              className="bg-green-50 pt-5 px-5 rounded-lg shadow-md mb-4"
+                              whileHover={{ scale: 1.03 }}
+                              whileTap={{ scale: 0.98 }}
+                            >
+                              <ProductLayout subItem={product} />
+                            </motion.div>
+                          ))}
+                        </div>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            )
+          )}
+        </div>
+      </div>
     );
   };
 
   return (
-    <>
-      {loading ? (
-        <div className="flex justify-between pb-3 items-center border-b mb-3 flex-col md:flex-row">
-          <Skeleton className="h-6 mb-2 md:mt-2 w-[120px] rounded-xl" />
-          <Skeleton className="h-8 w-[200px] rounded-xl" />
-        </div>
-      ) : (
-        <div id="Menu" className="flex justify-between items-center border-b mb-3 flex-col md:flex-row">
-          <span className="font-bold text-2xl mb-2">Menu ({totalCount})</span>
-            <div className="mb-5 relative">
-            <Input
+    <div className="min-h-screen">
+      {/* Desktop Navigation */}
+      <div className="hidden md:block bg-white shadow-md sticky top-0 z-10">
+        <div className="flex justify-between items-center">
+          <div className="lg:w-64 w-0" />
+          {/* Category Tabs */}
+          <nav className="container mx-auto px-4 py-3 overflow-x-auto whitespace-nowrap border-b border-gray-200">
+            <div className="flex justify-center space-x-3">
+              {Menu.map((category) => (
+                <motion.button
+                  key={category.category}
+                  className={`px-4 py-2 rounded-t-lg text-sm font-bold transition-colors duration-200 ${
+                    activeCategory === category.category
+                      ? "bg-green-700 text-white"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => {
+                    setActiveCategory(category.category);
+                    filterProducts(category.category);
+                  }}
+                >
+                  {category.category}
+                </motion.button>
+              ))}
+            </div>
+          </nav>
+          <div className="relative lg:w-64 w-fit">
+            <input
               type="text"
-              value={searchQuery}
-              onChange={handleSearch}
               placeholder="Search..."
-              className="pr-10 outline-none"
+              className="w-full px-4 py-2 rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800 placeholder-gray-500"
+              value={searchQuery}
+              onChange={(e) => handleSearch(e.target.value)}
             />
-            {searchQuery.length > 0 ? (
-              <div
-                onClick={clearSearch}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 outline-none focus:outline-none text-gray-500 hover:text-gray-700"
-              >
-                <X size={26} />
-              </div>
-            ) : (
-              <Search
-                size={21}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+            {searchQuery ? (
+              <X
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer"
+                onClick={() => handleSearch("")}
               />
+            ) : (
+              <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
             )}
           </div>
         </div>
-      )}
 
-      {loading ? (
-        <div>
-          <Skeleton className="h-6 w-full rounded-xl" />
-          <div className="space-y-4 grid grid-cols-1 md:mt-3 mt-[50px] md:grid-cols-2 gap-[20px]">
-            {Array.from({ length: 23 }).map((_, index) => (
-              <div key={index} className="flex items-center space-x-4">
-                <Skeleton className="h-[80px] w-[84px] rounded-full" />
-                <div className="space-y-2">
-                  <Skeleton className="h-4 w-[170px]" />
+        {/* Item Tabs */}
+        <AnimatePresence>
+          {activeCategory && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="py-2 border-b border-green-200"
+            >
+              <div className="container mx-auto px-4 overflow-x-auto py-2 whitespace-nowrap">
+                <div className="flex space-x-2">
+                  {Menu.find((c) => c.category === activeCategory)?.items.map(
+                    (item) => (
+                      <motion.button
+                        key={item.name}
+                        className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200 ${
+                          activeItem === item.name
+                            ? "bg-green-500 text-white"
+                            : "bg-white text-green-700 border border-green-300 hover:bg-green-100"
+                        }`}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => {
+                          setActiveItem(item.name);
+                          if (item.subItems.length > 0) {
+                            setActiveSubItem(item.subItems[0].category);
+                            setFilteredProducts(item.subItems[0].products);
+                          }
+                        }}
+                      >
+                        {item.name}
+                      </motion.button>
+                    )
+                  )}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      ) : filteredMenu.length === 0 ? (
-        <p className="text-xl text-center mb-[400px]">No results found.</p>
-      ) : (
-        filteredMenu.map((category: any) => (
-          <div key={category.category}>
-            <h2 className="text-2xl font-bold mt-7 mb-3">
-              {category.category} ({category.items.length})
-            </h2>
-            <div className="grid grid-cols-1">
-              <div className="grid grid-cols-1 border-t md:grid-cols-2 gap-x-[50px] w-full pt-6 gap-y-[50px]">
-                {category.items &&
-                  category.items.length > 0 &&
-                  category.items.map((item: any, idx: any) => (
-                    <CategoryLayout key={idx} item={item} delay={idx * 0.1} />
-                  ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Sub-Item Tabs */}
+        <AnimatePresence>
+          {activeItem && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="py-2"
+            >
+              <div className="container mx-auto px-4 overflow-x-auto whitespace-nowrap">
+                <div className="flex space-x-2">
+                  {Menu.find((c) => c.category === activeCategory)
+                    ?.items.find((i) => i.name === activeItem)
+                    ?.subItems.map((subItem) => (
+                      <motion.button
+                        key={subItem.category}
+                        className={`px-3 py-1 text-xs font-medium transition-colors duration-200 border-b-2 ${
+                          activeSubItem === subItem.category
+                            ? "border-green-500 text-green-700"
+                            : "border-transparent text-gray-600 hover:border-gray-300"
+                        }`}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => {
+                          setActiveSubItem(subItem.category);
+                          setFilteredProducts(subItem.products);
+                        }}
+                      >
+                        {subItem.category}
+                      </motion.button>
+                    ))}
+                </div>
               </div>
-              {category.subItems &&
-                category.subItems.length > 0 &&
-                category.subItems.map((subItem: any, subIdx: any) => (
-                  <div key={subIdx} className="grid-cols-1">
-                    <h2 className="text-xl border-b pb-1 font-bold mt-4 mb-2">
-                      {subItem.category}
-                    </h2>
-                    <div className="grid  grid-cols-1 md:grid-cols-2">
-                      {subItem.products.map((product: any, prodIdx: any) => (
-                        <ProductLayout
-                          key={prodIdx}
-                          subItem={product}
-                          delay={prodIdx * 0.1}
-                        />
-                      ))}
-                    </div>
-                  </div>
-                ))}
-            </div>
-          </div>
-        ))
-      )}
-    </>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Mobile Navigation */}
+      <div className="md:hidden">
+        <MobileMenu />
+      </div>
+
+      {/* Product Grid */}
+      <div className="sm:block hidden container mx-auto px-4 py-8">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-wrap gap-6"
+        >
+          {filteredProducts.map((product, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <ProductLayout subItem={product} delay={index} />
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </div>
   );
 };
 
