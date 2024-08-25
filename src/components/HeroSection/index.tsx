@@ -150,8 +150,8 @@ const HeroSection = () => {
       </div>
       <MobileHerosection />
 
-      <div className="lg:flex hidden pb-[50px] border-b flex-col md:flex-row justify-between items-stretch px-0 overflow-x-hidden">
-        <div className="py-[60px] pl-6 pr-[25px]  md:pl-[5%] lg:pl-[30px] xl:pl-[40px] bg-[#C0E8A6] lg:flex hidden items-center justify-start">
+      <div className="lg:flex hidden border-b flex-col md:flex-row justify-between items-stretch px-0 overflow-x-hidden">
+        <div className="py-[60px] pl-6 pr-[25px] md:pl-[5%] lg:pl-[30px] xl:pl-[40px] bg-[#C0E8A6] lg:flex hidden items-center justify-start">
           <div className="md:max-w-[1100px]  items-start justify-center flex flex-col text-left">
             <span className="font-bold text-4xl lg:text-5xl xl:text-6xl">
               Starbucks Menu With Prices 2024

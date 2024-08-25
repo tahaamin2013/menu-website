@@ -61,8 +61,6 @@ const MenuPage: React.FC = () => {
     setFilteredProducts(filtered);
   };
 
-
-  
   const MobileMenu = () => {
     const [expandedItem, setExpandedItem] = useState<string | null>(null);
 
@@ -141,7 +139,7 @@ const MenuPage: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-              <motion.button
+                <motion.button
                   className="sticky top-[120px] w-full p-4 text-left text-lg font-medium text-green-800 flex justify-between items-center bg-green-100"
                   onClick={() =>
                     setExpandedItem(
@@ -198,13 +196,12 @@ const MenuPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="">
       {/* Desktop Navigation */}
       <div className="hidden md:block bg-white shadow-md sticky top-0 z-10">
         <div className="flex justify-between items-center">
-          <div className="lg:w-64 w-0" />
           {/* Category Tabs */}
-          <nav className="container mx-auto px-4 py-3 overflow-x-auto whitespace-nowrap border-b border-gray-200">
+          <nav className="px-4 py-3 overflow-x-auto whitespace-nowrap border-b border-gray-200">
             <div className="flex justify-center space-x-3">
               {Menu.map((category) => (
                 <motion.button
@@ -226,7 +223,7 @@ const MenuPage: React.FC = () => {
               ))}
             </div>
           </nav>
-          <div className="relative lg:w-64 w-fit">
+          <div className="relative lg:w-[38rem] w-fit">
             <input
               type="text"
               placeholder="Search..."

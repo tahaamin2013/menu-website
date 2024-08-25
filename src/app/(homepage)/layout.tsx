@@ -38,7 +38,7 @@ export default function RootLayout({
           <HeroSection />
           <main>
             {/* <SubMenu /> */}
-            <div className="flex px-5 md:px-[60px] my-9">
+            <div className="flex px-5 md:px-[60px] mb-9">
               {/* <Sidebar /> */}
               <div className="w-full">{children}</div>
             </div>

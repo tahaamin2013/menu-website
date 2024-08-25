@@ -33,42 +33,6 @@ export const Menu: Category[] = [
         link: "hot-coffees",
         subItems: [
           {
-            category: "Americanos",
-            products: [
-              {
-                name: "Caffè Americano",
-                image: "/to.avif",
-                link: "caffe-americano",
-                sizes: [
-                  {
-                    size: "Short",
-                    calories: 5,
-                    price: "$3.35",
-                    size2: "8 fl oz",
-                  },
-                  {
-                    size: "Tall",
-                    calories: 10,
-                    price: "$3.45",
-                    size2: "12 fl oz",
-                  },
-                  {
-                    size: "Grande",
-                    calories: 15,
-                    price: "$3.65",
-                    size2: "16 fl oz",
-                  },
-                  {
-                    size: "Venti",
-                    calories: 15,
-                    price: "$3.85",
-                    size2: "20 fl oz",
-                  },
-                ],
-              },
-            ],
-          },
-          {
             category: "Brewed Coffees",
             products: [
               {
@@ -321,6 +285,43 @@ export const Menu: Category[] = [
               },
             ],
           },
+          {
+            category: "Americanos",
+            products: [
+              {
+                name: "Caffè Americano",
+                image: "/to.avif",
+                link: "caffe-americano",
+                sizes: [
+                  {
+                    size: "Short",
+                    calories: 5,
+                    price: "$3.35",
+                    size2: "8 fl oz",
+                  },
+                  {
+                    size: "Tall",
+                    calories: 10,
+                    price: "$3.45",
+                    size2: "12 fl oz",
+                  },
+                  {
+                    size: "Grande",
+                    calories: 15,
+                    price: "$3.65",
+                    size2: "16 fl oz",
+                  },
+                  {
+                    size: "Venti",
+                    calories: 15,
+                    price: "$3.85",
+                    size2: "20 fl oz",
+                  },
+                ],
+              },
+            ],
+          },
+         
           {
             category: "Cappuccinos",
             products: [
