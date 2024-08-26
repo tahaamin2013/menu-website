@@ -161,6 +161,9 @@ const BlogReading = ({ parmy, blogy }: { parmy: any; blogy: any }) => {
                             </div>
                         </div>
                         <RenderMdx blog={blogy} />
+                        <div>
+                            <FiverrSellerProfile />
+                        </div>
                     </div>
                 </div>
             </div>
