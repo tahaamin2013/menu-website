@@ -8,14 +8,8 @@ updatedAt: "2024-08-25"
 author: "Amin Ahsan"
 isPublished: true
 tags:
- 
 - Starbucks
-      
 ---
-
- 
-## Birthday Cake Pop 
-  
 
 Have you ever walked into Starbucks and spotted those cute little cake pops? The Birthday Cake Pop is a fan favorite! Let's explore what makes this tiny treat so special.
 
@@ -27,7 +21,7 @@ Despite the name, you don't need a birthday to enjoy this treat! It's perfect fo
 - A fun snack to share with friends
 
 The cake pop is made with simple ingredients like flour, sugar, eggs, and vanilla. White chocolate and food colouring create a pink coating. And don’t forget those cute sprinkles on top!
-
+<div className="table-container2">
 
 ### Ingredients
 | Ingredient              | Components                                   | Sub-components  |
@@ -51,15 +45,14 @@ The cake pop is made with simple ingredients like flour, sugar, eggs, and vanill
 |                         | Palm Oil (Soy), Annatto Extract (Color), Vegetable Juice (Color)                                             |                 |
 | Topping                 |Sugar, Cornstarch, Confectioners’ Glaze, Carnauba Wax|                 |
 |  Contains bioengineered food ingredients.|                                              |                 |
-
+</div>
 
 Starbucks offers different cake pop flavors throughout the year. The Birthday Cake Pop is always a hit. 
-
-If you're watching your diet, you might wonder about the calories in the Birthday Cake Pop. Each pop has 160 calories, 16g of sugar, and 8g of fat—not too bad for a sweet treat!
-
+If you're watching your diet, you might wonder about the calories in the Birthday Cake Pop. Each pop has 160 calories, 16g of sugar, and 8g of fat—not too bad for a sweet treat! 
+<div className="table-container">
 ### Nutrition
     | Nutrition               | Value                |  
-    |:------------------------|---------------------:|
+    |:------------------------|:---------------------|
     | Calories                | 160                  |
     | Total Fat               | 8 g                  |
     | Saturated Fat           | 4.5 g                |
@@ -70,10 +63,11 @@ If you're watching your diet, you might wonder about the calories in the Birthda
     | Dietary Fiber           | 0 g                  |
     | Sugars                  | 16 g                 |
     | Protein                 | 2 g                  |
-    
+
  General nutrition advice uses 2,000 calories a day, but calorie needs vary.    
 
 While cake pops aren't healthy food, they can be a nice treat now and then. Their small size helps control portions. If you're vegetarian, good news—this cake pop is veggie-friendly!
+    </div>
 
 Next time you're at Starbucks, why not try a Birthday Cake Pop? It's a tasty way to celebrate any day, not just birthdays. Pair it with your favorite coffee for a perfect pick-me-up!
 
@@ -86,7 +80,7 @@ Remember, Starbucks cake pops come in other flavors, too. But the Birthday Cake 
   }
   .table-container table {
     border-collapse: collapse;
-    width: 80%;
+    width: 30%;
   }
   .table-container th,
   .table-container td {
@@ -105,6 +99,37 @@ Remember, Starbucks cake pops come in other flavors, too. But the Birthday Cake 
   @media (max-width: 768px) {
     .table-container th:not(:first-child),
     .table-container td:not(:first-child) {
+      min-width: 50px;
+    }
+  }
+`}</style>
+
+<style jsx>{`
+  .table-container2 {
+    overflow-x: auto;
+    position: relative;
+  }
+  .table-container2 table {
+    border-collapse: collapse;
+    width: 80%;
+  }
+  .table-container2 th,
+  .table-container2 td {
+    border: 1px solid #ddd;
+    padding: 2px;
+    min-width: 30px;
+    font-size: 11px;
+  }
+  .table-container2 th:first-child,
+  .table-container2 td:first-child {
+    position: sticky;
+    left: 0;
+    background-color: white;
+    z-index: 1;
+  }
+  @media (max-width: 768px) {
+    .table-container2 th:not(:first-child),
+    .table-container2 td:not(:first-child) {
       min-width: 50px;
     }
   }
