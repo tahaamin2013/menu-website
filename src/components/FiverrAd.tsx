@@ -87,7 +87,7 @@ const FiverrSellerProfile = () => {
                             </span>
                             </span>
                         </div></div>
-                    <p className="text-gray-600 text-[13px]">Welcome to Excel Guru Hub with Shahnila Amin! With over 15 years of Excel expertise, I offer tailored solutions for data analysis, spreadsheet design, and VBA programming. Transform your data into actionable insights with my client-centric approach, ensuring efficiency and satisfaction. Let's excel together—contact me for top-notch Excel services!</p>
+                    <p className="text-gray-600 text-[13px]">Welcome to Excel Guru Hub! With 15+ years of expertise, I provide tailored Excel solutions. Contact me for top-notch services!</p>
 
                     <Link href="https://www.fiverr.com/excelguruhub?up_rollout=true" className="mt-2 w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
                         Check out my Gigs
