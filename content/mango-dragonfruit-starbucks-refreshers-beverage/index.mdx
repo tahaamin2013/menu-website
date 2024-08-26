@@ -25,8 +25,41 @@ Whether you're a busy professional or a student, this drink is for you.
 This cool drink mixes sweet mango and dragonfruit flavors. It's shaken with ice and topped with real dragonfruit bits. Perfect for a hot day!
 
 
-### Ingredients
-<div style={{ overflowX: "scroll", fontSize: "14px" }}>
+
+
+<style jsx>{`
+  .table-container {
+    overflow-x: auto;
+    position: relative;
+  }
+  .table-container table {
+    border-collapse: collapse;
+    width: 30%;
+  }
+  .table-container th,
+  .table-container td {
+    border: 1px solid #ddd;
+    padding: 2px;
+    min-width: 30px;
+    font-size: 11px;
+  }
+  .table-container th:first-child,
+  .table-container td:first-child {
+    position: sticky;
+    left: 0;
+    background-color: white;
+    z-index: 1;
+  }
+  @media (max-width: 768px) {
+    .table-container th:not(:first-child),
+    .table-container td:not(:first-child) {
+      min-width: 50px;
+    }
+  }
+`}</style>
+
+
+### Ingredients<div style={{ overflowX: "scroll", fontSize: "14px" }}>
   | Ingredient                         | Components       | Sub-components |
   |:-----------------------------------|------------------|----------------|
   | ICE                                |                  |                | 

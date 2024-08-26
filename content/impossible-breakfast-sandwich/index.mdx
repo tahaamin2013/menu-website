@@ -28,8 +28,41 @@ It is a versatile option for any time of the day. It's a delicious choice for br
 
 The plant-based sausage, with its meaty flavors, is a unique and intriguing choice for those who want to eat less meat but still enjoy the taste of it.
  
-### Ingredients
-<div style={{ overflowX: "scroll", fontSize: "12px" }}>
+
+
+<style jsx>{`
+  .table-container {
+    overflow-x: auto;
+    position: relative;
+  }
+  .table-container table {
+    border-collapse: collapse;
+    width: 30%;
+  }
+  .table-container th,
+  .table-container td {
+    border: 1px solid #ddd;
+    padding: 2px;
+    min-width: 30px;
+    font-size: 11px;
+  }
+  .table-container th:first-child,
+  .table-container td:first-child {
+    position: sticky;
+    left: 0;
+    background-color: white;
+    z-index: 1;
+  }
+  @media (max-width: 768px) {
+    .table-container th:not(:first-child),
+    .table-container td:not(:first-child) {
+      min-width: 50px;
+    }
+  }
+`}</style>
+
+
+### Ingredients<div style={{ overflowX: "scroll", fontSize: "12px" }}>
 | Ingredient              | Components                         | Sub-components                          |
 |-------------------------|------------------------------------|-----------------------------------------|
 | SESAME CIABATTA BUN     | ENRICHED WHEAT FLOUR               | FLOUR, NIACIN, REDUCED IRON, THIAMINE MONONITRATE, RIBOFLAVIN, FOLIC ACID), WATER, SESAME SEEDS, EGGS, DURUM WHEAT SEMOLINA, SUGAR, SUNFLOWER OIL, BUTTER (MILK), SALT, PAPRIKA, MALTED BARLEY FLOUR, YEAST, CULTURED WHEAT STARCH, MICROBIAL ENZYMES (AMYLASE)                                   |
