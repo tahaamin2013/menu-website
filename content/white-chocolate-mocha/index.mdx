@@ -10,9 +10,6 @@ isPublished: true
 tags:
 - Starbucks
 ---
-
- 
-## White Chocolate Mocha 
   
 If you are obsessed with sweets but don't like coffee, White hot Chocolate is for you. Unlike regular [hot chocolate](https://starbucks-menu-with-prices.net/hot-chocolate), kids also like it because it contains cocoa and is caffeine-free. 
 
@@ -63,7 +60,46 @@ The number of mocha sauce pumps varies depending on the drink size.
   }
 `}</style>
 
+<style jsx>{`
+  .table-container2 {
+    overflow-x: auto;
+    position: relative;
+  }
+  .table-container2 table {
+    border-collapse: collapse;
+    width: 80%;
+  }
+  .table-container2 th,
+  .table-container2 td {
+    border: 1px solid #ddd;
+    padding: 2px;
+    min-width: 30px;
+    font-size: 11px;
+  }
+  .table-container2 th:first-child,
+  .table-container2 td:first-child {
+    position: sticky;
+    left: 0;
+    background-color: white;
+    z-index: 1;
+  }
+  @media (max-width: 768px) {
+    .table-container2 th:not(:first-child),
+    .table-container2 td:not(:first-child) {
+      min-width: 50px;
+    }
+  }
+`}</style>
+ <style jsx>{`
+  @media (min-width: 768px) {
+    .responsive-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+`}</style>
 
+<div className="table-container2">
 ### Ingredients
 
 | Ingredient              | Components                         | Sub-components  |
@@ -86,7 +122,7 @@ The number of mocha sauce pumps varies depending on the drink size.
 |                         |                                    | NATURAL FLAVORS |
 |                         |                                    | POTASSIUM SORBATE |
 |                         |                                    | CITRIC ACID |
-
+</div>
 
 Want to change things up? You can! Try:
 - Adjusting the number of mocha sauce pumps (0-12).
@@ -108,9 +144,8 @@ This tasty drink is pretty rich. One short 8 fl oz cup has:
 It's okay for a treat, but maybe not every day.
 
 
-
+<div className="table-container">
 ### Nutrition
-
 |  Serving Size	            | Short          | Tall        | Grande   | Venti    |
 |:--------------------------|:--------------:|:-----------:|:--------:|:--------:|
 | **Volume**                | 8 <br/> fl oz  | 12 <br/> fl oz |  16 <br/> fl oz | 20 <br/> fl oz |
@@ -125,7 +160,7 @@ It's okay for a treat, but maybe not every day.
 | **Sugars**                | 22 g            | 34 g         | 46 g      | 58 g      |
 | **Protein**               | 6 g            | 10 g         | 13 g      | 17 g      |
 | **Caffeine ★**            | 75 mg          | 75 mg      | 150 mg   | 150 mg   |
-
+</div>
 ★ Caffeine is an approximate value
 
 General nutrition advice uses 2,000 calories a day, but calorie needs vary.

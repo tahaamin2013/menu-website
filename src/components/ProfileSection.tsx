@@ -5,7 +5,7 @@ import React from "react";
 const ProfileSection = () => {
   return (
     <div className="">
-      <div className="relative rounded-2xl border mt-16 mb-32 w-[240px] mr-3 mx-auto mt-24">
+      <div className="relative rounded-2xl border mt-11 mb-32 w-[240px] mr-3 mx-auto">
         <div className="rounded-2xl overflow-hidden shadow-glow shadow-black/25 bg-white">
           <div className="absolute -mt-20 w-full flex justify-left ml-5">
             <div className="h-32 w-32">

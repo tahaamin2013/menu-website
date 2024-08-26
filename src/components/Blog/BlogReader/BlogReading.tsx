@@ -27,6 +27,7 @@ import { Slash } from "lucide-react";
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import FiverrSellerProfile from "../../FiverrAd";
 
 const BlogReading = ({ parmy, blogy }: { parmy: any; blogy: any }) => {
   const blog = allBlogs.find(
@@ -153,6 +154,7 @@ const BlogReading = ({ parmy, blogy }: { parmy: any; blogy: any }) => {
               <div
                 className={`hidden md:flex flex-col gap-[100px]`}
               >
+                <FiverrSellerProfile />
                 <ProfileSection />
               </div>
             </div>
