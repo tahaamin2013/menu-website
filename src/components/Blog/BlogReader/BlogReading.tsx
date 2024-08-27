@@ -152,7 +152,7 @@ const BlogReading = ({ parmy, blogy }: { parmy: any; blogy: any }) => {
                         <div className="flex flex-col gap-[30px] px-3">
                             <Product productName={blog.ProductName} />
                             <div
-                                className={`hidden md:flex flex-col gap-[30px]`}
+                                className={`hidden md:flex flex-col gap-[40px]`}
                             >
                                 <ProfileSection />
                                 <div>
@@ -161,7 +161,7 @@ const BlogReading = ({ parmy, blogy }: { parmy: any; blogy: any }) => {
                             </div>
                         </div>
                         <RenderMdx blog={blogy} />
-                        <div>
+                        <div className='sm:hidden flex'>
                             <FiverrSellerProfile />
                         </div>
                     </div>
