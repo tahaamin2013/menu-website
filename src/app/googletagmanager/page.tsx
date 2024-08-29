@@ -1,22 +1,21 @@
-'use client'
-
-import { Button } from '@/src/components/ui/button'
-import { sendGTMEvent } from '@next/third-parties/google'
-
-import React from 'react'
+import React from 'react';
+import { sendGTMEvent } from '@next/third-parties/google';
+import {MyButton} from './button'
 
 const GoogleTagManager: React.FC = () => {
   const handleClick = () => {
-    sendGTMEvent('event', 'buttonClicked', { value: 'xyz' });
-  }
+    sendGTMEvent({
+      type: 'event',
+      action: 'buttonClicked',
+      payload: { value: 'xyz' }
+    });
+  };
 
   return (
     <div>
-      <Button onClick={handleClick}>
-        Send Event
-      </Button>
+      <MyButton onClick={handleClick} label="Send Event" />
     </div>
-  )
-}
+  );
+};
 
-export default GoogleTagManager
+export default GoogleTagManager;
