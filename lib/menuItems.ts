@@ -1223,7 +1223,7 @@ export const Menu: Category[] = [
                     size: "Venti",
                     price: "$6.75",
                     calories: 220,
-                    size2: "20 fl oz",
+                    size2: "24 fl oz",
                   },
                 ],
                 link: "iced-hazelnut-oatmilk-shaken-espresso",

@@ -12,6 +12,7 @@
   "dependencies": {
     "@dotlottie/react-player": "^1.2.1",
     "@emotion/is-prop-valid": "^1.2.2",
+    "@next/third-parties": "^14.2.7",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-dropdown-menu": "^2.1.1",
