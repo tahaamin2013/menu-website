@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import siteMetadata from "../utils/siteMetaData";
-import { GoogleTagManager } from '@next/third-parties/google'
+import { GoogleTagManager } from "@next/third-parties/google";
 import { cx } from "../utils";
 import Script from "next/script";
 
@@ -63,15 +63,14 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         />
-
-    
       </head>
+      <GoogleTagManager gtmId="GTM-TN3BS5Q7" />
       <body className={cx("font-mr")}>
-        
-        {children}
 
-        <GoogleTagManager gtmId="GTM-TN3BS5Q7" />
-      </body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TN3BS5Q7"
+height="0" width="0" style={{display:"none", visibility:"hidden"}}></iframe></noscript>
+
+        {children}</body>
     </html>
   );
 }
