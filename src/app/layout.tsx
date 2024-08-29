@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import siteMetadata from "../utils/siteMetaData";
 import { cx } from "../utils";
-import Script from 'next/script';
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description: siteMetadata.description,
   },
   twitter: {
-    card: 'summary_large_image',
+    card: "summary_large_image",
   },
   icons: {
     icon: ["/favicon.ico"],
@@ -31,15 +31,15 @@ export default function RootLayout({
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "StarbMenu",
-    "url": "https://starbucks-menu-with-prices.net/",
-    "potentialAction": {
+    name: "StarbMenu",
+    url: "https://starbucks-menu-with-prices.net/",
+    potentialAction: {
       "@type": "SearchAction",
-      "target": {
+      target: {
         "@type": "EntryPoint",
-        "urlTemplate": "https://starbucks-menu-with-prices.net/"
+        urlTemplate: "https://starbucks-menu-with-prices.net/",
       },
-      "query-input": "required name=search_term_string"
+      "query-input": "required name=search_term_string",
     },
   };
 
@@ -47,18 +47,55 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta name="theme-color" content="#0b7555" />
-        <meta property="og:image" content="https://starbucks-menu-with-prices.net/opengraph-image.png" />
+        <meta
+          property="og:image"
+          content="https://starbucks-menu-with-prices.net/opengraph-image.png"
+        />
         <link
           rel="canonical"
-          href={`${siteMetadata.siteUrl}${typeof window !== 'undefined' ? window.location.pathname : ''}`}
+          href={`${siteMetadata.siteUrl}${
+            typeof window !== "undefined" ? window.location.pathname : ""
+          }`}
         />
         <Script
           id="schema-markup"
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         />
+
+        {/* Google Tag Manager */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+                (function(w,d,s,l,i){
+                  w[l]=w[l]||[];
+                  w[l].push({'gtm.start':
+                  new Date().getTime(),event:'gtm.js'});
+                  var f=d.getElementsByTagName(s)[0],
+                      j=d.createElement(s),
+                      dl=l!='dataLayer'?'&l='+l:'';
+                  j.async=true;
+                  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+                  f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','GTM-TN3BS5Q7');
+              `,
+          }}
+        />
+        {/* End Google Tag Manager */}
       </head>
-      <body className={cx("font-mr")}>{children}</body>
+      <body className={cx("font-mr")}>
+        {/* Google Tag Manager (noscript) */}
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: `
+                <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TN3BS5Q7"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+              `,
+          }}
+        />
+        {/* End Google Tag Manager (noscript) */}
+        {children}
+      </body>
     </html>
   );
 }
