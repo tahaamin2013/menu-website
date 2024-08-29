@@ -154,10 +154,10 @@ const BlogReading = ({ parmy, blogy }: { parmy: any; blogy: any }) => {
                             <div
                                 className={`hidden md:flex flex-col gap-[40px]`}
                             >
-                                <ProfileSection />
-                                <div>
+                                <div className='mt-11'>
                                     <FiverrSellerProfile />
                                 </div>
+                                <ProfileSection />
                             </div>
                         </div>
                         <RenderMdx blog={blogy} />

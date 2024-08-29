@@ -64,13 +64,12 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         />
       </head>
-      <GoogleTagManager gtmId="GTM-TN3BS5Q7" />
+     
       <body className={cx("font-mr")}>
+       
 
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TN3BS5Q7"
-height="0" width="0" style={{display:"none", visibility:"hidden"}}></iframe></noscript>
-
-        {children}</body>
+        {children}
+      </body>
     </html>
   );
 }
