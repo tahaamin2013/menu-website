@@ -96,11 +96,10 @@ const MenuPage: React.FC = () => {
             {Menu.find((c) => c.category === activeCategory)?.items.map((item) => (
               <motion.button
                 key={item.name}
-                className={`w-full p-3 text-left text-lg font-medium mb-2 rounded-lg ${
-                  activeItem === item.name
+                className={`w-full p-3 text-left text-lg font-medium mb-2 rounded-lg ${activeItem === item.name
                     ? "bg-green-100 text-green-800"
                     : "text-green-700 hover:bg-green-50"
-                }`}
+                  }`}
                 onClick={() => {
                   setActiveItem(item.name);
                   if (item.subItems.length > 0) {
@@ -181,11 +180,10 @@ const MenuPage: React.FC = () => {
             {["Drinks", "Foods", "At Home Coffee", "Merchandise"].map((tab) => (
               <motion.button
                 key={tab}
-                className={`text-sm font-medium px-3 py-1 rounded-full ${
-                  activeCategory === tab
-                    ? "bg-white text-green-700"
-                    : "bg-green-600 text-white"
-                }`}
+                className={`text-sm font-medium px-3 py-1 rounded-full ${activeCategory === tab
+                    ? "bg-white text-black"
+                    : "bg-[#0B652F] mr-2 text-white"
+                  }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => {
@@ -200,63 +198,63 @@ const MenuPage: React.FC = () => {
         </div>
 
         <div className="pt-4">
-        {Menu.find((c) => c.category === activeCategory)?.items.map(
-          (item, index) => (
-            <motion.div
-              key={item.name}
-              className="mb-4 bg-green-100 rounded-lg shadow-lg"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              ref={(el) => (itemRefs.current[item.name] = el)}
-            >
-              <motion.button
-                className="sticky top-[140px] w-full p-4 text-left text-lg font-medium text-green-800 flex justify-between items-center bg-green-100"
-                onClick={() => toggleAccordion(item.name)}
+          {Menu.find((c) => c.category === activeCategory)?.items.map(
+            (item, index) => (
+              <motion.div
+                key={item.name}
+                className="mb-4 bg-green-100 rounded-lg shadow-lg"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                ref={(el) => (itemRefs.current[item.name] = el)}
               >
-                {item.name}
-                <motion.div
-                  animate={{ rotate: expandedItem === item.name ? 90 : 0 }}
-                  transition={{ duration: 0.3 }}
+                <motion.button
+                  className="sticky top-[140px] w-full p-4 text-left text-lg font-medium text-green-800 flex justify-between items-center bg-green-100"
+                  onClick={() => toggleAccordion(item.name)}
                 >
-                  <ChevronLeft size={20} />
-                </motion.div>
-              </motion.button>
-              <AnimatePresence>
-                {expandedItem === item.name && (
+                  {item.name}
                   <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
+                    animate={{ rotate: expandedItem === item.name ? 90 : 0 }}
                     transition={{ duration: 0.3 }}
-                    className="overflow-hidden bg-white"
                   >
-                    {item.subItems.map((subItem) => (
-                      <div
-                        key={subItem.category}
-                        className="py-4 border-t border-green-200"
-                      >
-                        <h3 className="font-medium text-green-700 mb-3">
-                          {subItem.category}
-                        </h3>
-                        {subItem.products.map((product) => (
-                          <motion.div
-                            key={product.name}
-                            className="bg-green-50 pt-5 rounded-lg shadow-md mb-4"
-                            whileHover={{ scale: 1.03 }}
-                            whileTap={{ scale: 0.98 }}
-                          >
-                            <ProductLayout subItem={product} />
-                          </motion.div>
-                        ))}
-                      </div>
-                    ))}
+                    <ChevronLeft size={20} />
                   </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          )
-        )}
+                </motion.button>
+                <AnimatePresence>
+                  {expandedItem === item.name && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden bg-white"
+                    >
+                      {item.subItems.map((subItem) => (
+                        <div
+                          key={subItem.category}
+                          className="py-4 border-t border-green-200"
+                        >
+                          <h3 className="font-medium text-green-700 mb-3">
+                            {subItem.category}
+                          </h3>
+                          {subItem.products.map((product) => (
+                            <motion.div
+                              key={product.name}
+                              className="bg-green-50 pt-5 rounded-lg shadow-md mb-4"
+                              whileHover={{ scale: 1.03 }}
+                              whileTap={{ scale: 0.98 }}
+                            >
+                              <ProductLayout subItem={product} />
+                            </motion.div>
+                          ))}
+                        </div>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            )
+          )}
         </div>
       </div>
     );
@@ -273,11 +271,10 @@ const MenuPage: React.FC = () => {
               {Menu.map((category) => (
                 <motion.button
                   key={category.category}
-                  className={`px-4 py-2 rounded-t-lg text-sm font-bold transition-colors duration-200 ${
-                    activeCategory === category.category
+                  className={`px-4 py-2 rounded-t-lg text-sm font-bold transition-colors duration-200 ${activeCategory === category.category
                       ? "bg-green-700 text-white"
                       : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                  }`}
+                    }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => {
@@ -324,11 +321,10 @@ const MenuPage: React.FC = () => {
                     (item) => (
                       <motion.button
                         key={item.name}
-                        className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200 ${
-                          activeItem === item.name
+                        className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200 ${activeItem === item.name
                             ? "bg-green-500 text-white"
                             : "bg-white text-green-700 border border-green-300 hover:bg-green-100"
-                        }`}
+                          }`}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => {
@@ -365,11 +361,10 @@ const MenuPage: React.FC = () => {
                     ?.subItems.map((subItem) => (
                       <motion.button
                         key={subItem.category}
-                        className={`px-3 py-1 text-xs font-medium transition-colors duration-200 border-b-2 ${
-                          activeSubItem === subItem.category
+                        className={`px-3 py-1 text-xs font-medium transition-colors duration-200 border-b-2 ${activeSubItem === subItem.category
                             ? "border-green-500 text-green-700"
                             : "border-transparent text-gray-600 hover:border-gray-300"
-                        }`}
+                          }`}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => {

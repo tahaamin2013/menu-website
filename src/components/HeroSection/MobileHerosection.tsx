@@ -76,12 +76,11 @@ const MobileHerosection = () => {
                   className="flex flex-col gap-3 w-full items-center px-10 justify-center text-center"
                 >
                   <Image
-                    className="rounded-full w-[12rem]"
+                    className="rounded-full"
                     src={product.image}
                     alt={product.name}
-                    width={400}
-                    height={400}
-                    // priority // Add this to prioritize image loading
+                    width={200}
+                    height={200}
                     loading="lazy"
                   />
                   <span className="font-bold text-xl">{product.name}</span>
