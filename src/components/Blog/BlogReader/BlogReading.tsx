@@ -154,7 +154,7 @@ const BlogReading = ({ parmy, blogy }: { parmy: any; blogy: any }) => {
                             <div
                                 className={`hidden md:flex flex-col gap-[40px]`}
                             >
-                                <div className='mt-11'>
+                                <div className='mb-11'>
                                     <FiverrSellerProfile />
                                 </div>
                                 <ProfileSection />
