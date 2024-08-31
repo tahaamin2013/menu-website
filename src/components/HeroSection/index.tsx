@@ -121,7 +121,6 @@ const HeroSection = () => {
   }, [emblaApi, onSelect]);
 
   const link = convertNameToLink(selectedProduct.name);
-  const categoryLink = convertNameToLink(selectedCategory.name);
 
   return (
     <section>
