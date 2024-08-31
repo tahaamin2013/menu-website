@@ -130,7 +130,7 @@ const HeroSection = () => {
           <h1 className="font-bold z-[200px] text-gray-900 mb-4 text-3xl sm:text-4xl md:text-5xl">
             Starbucks Menu With Prices 2024
           </h1>
-          <p className="text-sm z-[200px] sm:text-base">
+          <p className="text-sm">
             Starbucks offers a diverse menu, including espresso, coffee, tea,
             bakery items, breakfast, and lunch options. In addition to their
             specialty coffee drinks, they also provide a selection of snacks and
@@ -140,7 +140,7 @@ const HeroSection = () => {
           <div>
             <GoyButtonforHeroSection
               id="Menu"
-              classname="z-[200px] border-2 text-[#10472B] border-[#10472B] hover:!text-[#10472B] w-full rounded-full text-sm py-2 mt-5"
+              classname="bg-transparent z-[200px] border-2 text-primary border-primary hover:!text-primary w-full rounded-full text-sm py-2 mt-5"
             >
               View Full Menu
             </GoyButtonforHeroSection>
@@ -180,7 +180,7 @@ const HeroSection = () => {
                 <Image
                   className="rounded-full max-w-[200px] md:max-w-[280px] shadow-glow shadow-primary"
                   src={selectedProduct.image}
-                  alt={`Starbucks Product`}
+                  alt={`${selectedProduct.name} Image`}
                   width={425}
                   height={425}
                   loading="lazy"
@@ -238,7 +238,7 @@ const HeroSection = () => {
                       key={product.link}
                       className={`pt-1 md:basis-1/3 ${marginLeftClass}`}
                     >
-                      <div
+                      <button
                         onClick={() => handleProductClick(product, index)}
                         className={`${product === selectedProduct
                           ? "bg-primary text-white"
@@ -248,13 +248,13 @@ const HeroSection = () => {
                         <Image
                           className="rounded-full w-10 h-10 lg:w-[100px] lg:h-[100px]"
                           src={product.image}
-                          alt={`Starbucks Product`}
+                          alt={product.name}
                           loading="lazy"
                           width={100}
                           height={100}
                         />
                         <span className="line-clamp-2">{product.name}</span>
-                      </div>
+                      </button>
                     </div>
                   );
                 })}

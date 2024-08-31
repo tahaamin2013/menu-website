@@ -81,6 +81,7 @@ const MobileHerosection = () => {
                     height={200}
                     loading="eager"
                   /> */}
+                  {/* TODO: chage above image */}
                   <span className="font-bold text-xl">{product.name}</span>
                   <Link
                     href={`/${link}`}
