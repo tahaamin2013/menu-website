@@ -81,7 +81,7 @@ const MobileHerosection = () => {
                     alt={`Starbucks Product`}
                     width={200}
                     height={200}
-                    loading="lazy"
+                    loading="eager"
                   />
                   <span className="font-bold text-xl">{product.name}</span>
                   <Link
