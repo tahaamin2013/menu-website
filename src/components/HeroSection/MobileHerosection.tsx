@@ -10,9 +10,7 @@ import {
   CarouselPrevious,
 } from "@/src/components/ui/carouselformobile";
 import { Menu } from "@/lib/menuItems";
-import { Button } from "../ui/button";
 import Link from "next/link";
-import Goy from "../goy";
 import { Skeleton } from "../ui/skeleton";
 
 function convertNameToLink(name: any) {
@@ -75,14 +73,14 @@ const MobileHerosection = () => {
                   key={product.link}
                   className="flex flex-col gap-3 w-full items-center px-10 justify-center text-center"
                 >
-                  <Image
+                  {/* <Image
                     className="rounded-full"
                     src={product.image}
                     alt={`Starbucks Product`}
                     width={200}
                     height={200}
                     loading="eager"
-                  />
+                  /> */}
                   <span className="font-bold text-xl">{product.name}</span>
                   <Link
                     href={`/${link}`}

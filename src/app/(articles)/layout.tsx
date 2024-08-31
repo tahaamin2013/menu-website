@@ -3,8 +3,6 @@ import "../globals.css";
 import Navbar from "@/src/components/Navbar";
 import SubMenu from "@/src/components/subMenu";
 import Footer from "@/src/components/footer";
-import Link from "next/link";
-
 const inter = Inter({ subsets: ["latin"] });
 
 export default function ArticlesLayout({

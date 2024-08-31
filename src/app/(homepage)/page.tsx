@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, Category, Item, SubItem, Product } from "@/lib/menuItems";
+import { Menu, Product } from "@/lib/menuItems";
 import {
   Search,
   X,
@@ -10,7 +10,6 @@ import {
   ChevronLeft,
   ArrowLeft,
 } from "lucide-react";
-import Link from "next/link";
 import ProductLayout from "@/src/components/StarbucksProduct/ProductLayout";
 
 const MenuPage: React.FC = () => {
