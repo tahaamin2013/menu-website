@@ -128,7 +128,7 @@ const HeroSection = () => {
         <h1 className="font-bold z-[200px] text-gray-900 mb-4 text-3xl sm:text-4xl md:text-5xl">
           Starbucks Menu With Prices 2024
         </h1>
-        <p className="text-sm">
+        <p>
           Starbucks offers a diverse menu, including espresso, coffee, tea,
           bakery items, breakfast, and lunch options. In addition to their
           specialty coffee drinks, they also provide a selection of snacks and
