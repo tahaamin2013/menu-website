@@ -10,7 +10,7 @@ const FiverrSellerProfile = () => {
                     width={350}
                     height={360}
                     className='h-full w-[340px] object-cover'
-                    alt='Fiverr image'
+                    alt='Fiverr add Image'
                 />
                 <div className="absolute inset-x-0 bottom-0 h-[150px] opacity-50 bg-green-950" />
             </div>

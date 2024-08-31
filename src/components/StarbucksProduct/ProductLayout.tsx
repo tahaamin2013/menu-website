@@ -86,7 +86,7 @@ const ProductLayout = ({ subItem, delay }: any) => {
             src={subItem.image}
             loading="lazy"
             decoding="async"
-            alt={`Starbucks menu with prices featuring a ${productName}`}
+            alt={`Starbucks menu with prices featuring a product`}
             width={130}
             height={140}
             className="rounded-full max-w-[140rem] max-h-[130px]"
@@ -150,11 +150,13 @@ const ProductLayout = ({ subItem, delay }: any) => {
                           className="cursor-pointer outline-none"
                           key={index}
                           value={sizeOption.size}
+                          aria-checked={selectedSize.size === sizeOption.size} // Ensure proper aria-checked usage
                         >
                           {sizeOption.size}
                         </DropdownMenuRadioItem>
                       ))}
                     </DropdownMenuRadioGroup>
+
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : null}

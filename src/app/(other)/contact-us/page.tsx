@@ -84,7 +84,7 @@ export default function ContactForm() {
           required
         ></Textarea>
       </div>
-      <Button type="submit" className='w-full text-white font-bold'>
+      <Button type="submit" aria-label='Send message' className='w-full text-white font-bold'>
         Send Message
       </Button>
     </form>

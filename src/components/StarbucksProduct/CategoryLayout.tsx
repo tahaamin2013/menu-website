@@ -20,7 +20,7 @@ const CategoryLayout = ({ item, delay, key }: any) => {
         <Image
           loading="lazy"
           src={item.image}
-          alt={`Starbucks ${item.name} Image`}
+          alt={`Starbucks Product Image`}
           width={120}
           height={120}
           className="rounded-full"

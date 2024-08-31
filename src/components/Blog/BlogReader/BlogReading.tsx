@@ -137,7 +137,7 @@ const BlogReading = ({ parmy, blogy }: { parmy: any; blogy: any }) => {
                             ))}
                         </div>
                         {blogy.tags.length > 3 && (
-                            <button onClick={toggleShowMore} className="text-primary ml-2">
+                            <button aria-label="Show More/less tags Button" onClick={toggleShowMore} className="text-primary ml-2">
                                 {showMore ? "Show Less" : "Show More"}
                             </button>
                         )}

@@ -43,7 +43,7 @@ const ProductContent = ({ subItem, delay }: any) => {
           src={subItem.image}
           loading="lazy"
           decoding="async"
-          alt={`Starbucks menu with prices featuring a ${subItem.name}`}
+          alt={`Starbucks menu with prices featuring a product`}
           width={220}
           height={2100}
           className="rounded-full h-fit w-[220px] object-cover object-top myshadow-black"

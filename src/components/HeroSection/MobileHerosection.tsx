@@ -78,7 +78,7 @@ const MobileHerosection = () => {
                   <Image
                     className="rounded-full"
                     src={product.image}
-                    alt={product.name}
+                    alt={`Starbucks Product`}
                     width={200}
                     height={200}
                     loading="lazy"

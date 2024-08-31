@@ -140,7 +140,7 @@ const HeroSection = () => {
           <div>
             <GoyButtonforHeroSection
               id="Menu"
-              classname="bg-transparent z-[200px] border-2 text-primary border-primary hover:!text-primary w-full rounded-full text-sm py-2 mt-5"
+              classname="z-[200px] border-2 text-[#10472B] border-[#10472B] hover:!text-[#10472B] w-full rounded-full text-sm py-2 mt-5"
             >
               View Full Menu
             </GoyButtonforHeroSection>
@@ -180,7 +180,7 @@ const HeroSection = () => {
                 <Image
                   className="rounded-full max-w-[200px] md:max-w-[280px] shadow-glow shadow-primary"
                   src={selectedProduct.image}
-                  alt={`${selectedProduct.name} Image`}
+                  alt={`Starbucks Product`}
                   width={425}
                   height={425}
                   loading="lazy"
@@ -195,7 +195,7 @@ const HeroSection = () => {
               </Link>
               <div className="flex flex-col gap-2">
                 <Link href={`/${link}`}>
-                  <Button className="text-white rounded-full duration-500 transition-all text-sm lg:text-base">
+                  <Button aria-label="View Price and Calories Button" className="text-white rounded-full duration-500 transition-all text-sm lg:text-base">
                     View Price & Calories
                   </Button>
                 </Link>
@@ -205,6 +205,7 @@ const HeroSection = () => {
 
           <div className="flex z-50 flex-col items-center justify-center">
             <button
+              aria-label="Arrow Right"
               onClick={handlePreviousSlide}
               className={`mb-2 ${canScrollPrev ? "bg-primary hover:bg-primary/80" : "bg-gray-300"
                 } rounded-full`}
@@ -237,7 +238,7 @@ const HeroSection = () => {
                       key={product.link}
                       className={`pt-1 md:basis-1/3 ${marginLeftClass}`}
                     >
-                      <button
+                      <div
                         onClick={() => handleProductClick(product, index)}
                         className={`${product === selectedProduct
                           ? "bg-primary text-white"
@@ -247,13 +248,13 @@ const HeroSection = () => {
                         <Image
                           className="rounded-full w-10 h-10 lg:w-[100px] lg:h-[100px]"
                           src={product.image}
-                          alt={product.name}
+                          alt={`Starbucks Product`}
                           loading="lazy"
                           width={100}
                           height={100}
                         />
                         <span className="line-clamp-2">{product.name}</span>
-                      </button>
+                      </div>
                     </div>
                   );
                 })}

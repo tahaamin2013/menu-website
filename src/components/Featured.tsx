@@ -50,6 +50,7 @@ const Feetured: React.FC<FeeturedProps> = ({
                 {description}
               </p>
               <button
+                aria-label="Order Now"
                 className="rounded-full px-4 mt-4 py-1 md:mb-0 mb-3"
                 style={{ border: `1px solid ${borderButton}` }} // Set button border color
               >
