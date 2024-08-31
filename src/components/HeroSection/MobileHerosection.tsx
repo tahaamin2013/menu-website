@@ -61,7 +61,7 @@ const MobileHerosection = () => {
           <Skeleton className="mb-2 h-[400px] md:mt-2 w-full rounded-xl" />
         </div>
       ) : (
-        <Carousel className="h-[400px] mb-6 lg:hidden block">
+        <Carousel className="h-[400px] mb-6 lg:hidden block overflow-hidden">
           <div className="w-[300px] absolute -left-[13rem] -bottom-0 h-[200px] bg-orange-300 rounded-full blur-3xl" />
           <div className="w-[400px] absolute -right-[13rem] top-[10px] h-[307px] bg-[#C0E8A6] rounded-full blur-2xl" />
           <CarouselContent>
@@ -73,14 +73,14 @@ const MobileHerosection = () => {
                   key={product.link}
                   className="flex flex-col gap-3 items-center px-10 justify-center text-center"
                 >
-                  {/* <Image
+                  <Image
                     className="rounded-full"
                     src={product.image}
                     alt={`Starbucks Product`}
                     width={200}
                     height={200}
-                    loading="eager"
-                  /> */}
+                    loading="lazy"
+                  />
                   {/* TODO: chage above image */}
                   <span className="font-bold text-xl">{product.name}</span>
                   <Link
