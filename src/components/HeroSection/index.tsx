@@ -124,30 +124,27 @@ const HeroSection = () => {
   const categoryLink = convertNameToLink(selectedCategory.name);
 
   return (
-    <section className="w-full">
-      <div className="lg:hidden sm:block text-center px-4 sm:px-6 my-8">
-        <header className="z-[200px]">
-          <h1 className="font-bold z-[200px] text-gray-900 mb-4 text-3xl sm:text-4xl md:text-5xl">
-            Starbucks Menu With Prices 2024
-          </h1>
-          <p className="text-sm">
-            Starbucks offers a diverse menu, including espresso, coffee, tea,
-            bakery items, breakfast, and lunch options. In addition to their
-            specialty coffee drinks, they also provide a selection of snacks and
-            baked goods for those seeking a quick bite.
-          </p>
+    <section>
+      <header className="lg:hidden sm:block text-center px-4 sm:px-6 my-5">
+        <h1 className="font-bold z-[200px] text-gray-900 mb-4 text-3xl sm:text-4xl md:text-5xl">
+          Starbucks Menu With Prices 2024
+        </h1>
+        <p className="text-sm">
+          Starbucks offers a diverse menu, including espresso, coffee, tea,
+          bakery items, breakfast, and lunch options. In addition to their
+          specialty coffee drinks, they also provide a selection of snacks and
+          baked goods for those seeking a quick bite.
+        </p>
 
-          <div>
-            <GoyButtonforHeroSection
-              id="Menu"
-              classname="bg-transparent z-[200px] border-2 text-primary border-primary hover:!text-primary w-full rounded-full text-sm py-2 mt-5"
-            >
-              View Full Menu
-            </GoyButtonforHeroSection>
-          </div>
-        </header>
-        <div className="w-[270px] absolute -left-[13rem] top-[40px] h-[200px] bg-orange-300 rounded-full blur-3xl" />
-      </div>
+        <div>
+          <GoyButtonforHeroSection
+            id="Menu"
+            classname="bg-transparent z-[200px] border-2 text-primary border-primary hover:!text-primary w-full rounded-full text-sm py-2 mt-5"
+          >
+            View Full Menu
+          </GoyButtonforHeroSection>
+        </div>
+      </header>
       <MobileHerosection />
 
       <div className="lg:flex hidden border-b flex-col md:flex-row justify-between items-stretch px-0 overflow-x-hidden">
