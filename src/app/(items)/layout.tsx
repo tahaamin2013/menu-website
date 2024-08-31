@@ -6,6 +6,8 @@ import SubMenu from "@/src/components/subMenu";
 import Footer from "@/src/components/footer";
 import Sidebar from "@/src/components/sidebar";
 import siteMetadata from "@/src/utils/siteMetaData";
+import { Suspense } from "react";
+import Loading from "@/src/components/Loading";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,7 +31,8 @@ export default function RootLayout({
           </div>
         </main>
         <Footer />
+
       </body>
-    </html>
+    </html >
   );
 }

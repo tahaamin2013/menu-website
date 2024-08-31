@@ -5,6 +5,8 @@ import Navbar from "@/src/components/Navbar";
 import Footer from "@/src/components/footer";
 import siteMetadata from "@/src/utils/siteMetaData";
 import HeroSection from "@/src/components/HeroSection";
+import { Suspense } from "react";
+import Loading from "@/src/components/Loading";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,18 +34,22 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         {/* <Loader> */}
-          <Navbar />
-          <HeroSection />
-          <main>
-            {/* <SubMenu /> */}
-            <div className="flex px-5 md:px-[60px] mb-9">
-              {/* <Sidebar /> */}
-              <div className="w-full">{children}</div>
+        <Navbar />
+        <HeroSection />
+        <main>
+          {/* <SubMenu /> */}
+          <div className="flex px-5 md:px-[60px] mb-9">
+            {/* <Sidebar /> */}
+            <div className="w-full">
+              {children}
+
             </div>
-          </main>
-          <Footer />
+          </div>
+        </main>
+
+        <Footer />
         {/* </Loader> */}
       </body>
-    </html>
+    </html >
   );
 }

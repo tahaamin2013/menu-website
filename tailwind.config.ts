@@ -71,39 +71,52 @@ const config = {
           "0%": { strokeDashoffset: "1000" },
           "100%": { strokeDashoffset: "0" },
         },
+        wave: {
+          "0%, 100%": { d: 'path("M25,40 Q50,48 75,40")' },
+          "50%": { d: 'path("M25,40 Q50,32 75,40")' },
+        },
+        steam: {
+          "0%": { transform: "translateY(0)", opacity: "0" },
+          "50%": { transform: "translateY(-10px)", opacity: "1" },
+          "100%": { transform: "translateY(-20px)", opacity: "0" },
+        },
+        drip: {
+          "0%": { transform: "translateY(-40px)", opacity: "0" },
+          "50%": { transform: "translateY(0)", opacity: "1" },
+          "100%": { transform: "translateY(40px)", opacity: "0" },
+        },
+        sip: {
+          "0%, 100%": { d: 'path("M30,40 C40,37 60,37 70,40")' },
+          "50%": { d: 'path("M30,40 C40,43 60,43 70,40")' },
+        },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        letterFloat: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-5px)" },
+        },
       },
-      wave: {
-        "0%, 100%": { d: 'path("M25,40 Q50,48 75,40")' },
-        "50%": { d: 'path("M25,40 Q50,32 75,40")' },
-      },
-      steam: {
-        "0%": { transform: "translateY(0)", opacity: 0 },
-        "50%": { transform: "translateY(-10px)", opacity: 1 },
-        "100%": { transform: "translateY(-20px)", opacity: 0 },
-      },
-      drip: {
-        "0%": { transform: "translateY(-40px)", opacity: 0 },
-        "50%": { transform: "translateY(0)", opacity: 1 },
-        "100%": { transform: "translateY(40px)", opacity: 0 },
-      },
+
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
         "bounce-1": "bounce 1s infinite 0.2s",
         "bounce-2": "bounce 1s infinite 0.4s",
         "bounce-3": "bounce 1s infinite 0.6s",
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
         draw: "draw 2s ease-in-out infinite",
         wave: "wave 2s ease-in-out infinite",
         steam: "steam 2s ease-in-out infinite",
         drip: "drip 2s ease-in-out infinite",
+        sip: "sip 4s ease-in-out infinite",
+        "fade-in": "fadeIn 2s ease-out",
+        "letter-float": "letterFloat 2s ease-in-out infinite",
       },
     },
   },
   plugins: [
-    require("tailwindcss-animate"),
-    require("@tailwindcss/forms"),
-    require("@tailwindcss/typography"),
-    function ({ addUtilities }:any) {
+    function ({ addUtilities }: any) {
       const newUtilities = {
         ".animate-draw": {
           animation: "draw 2s ease-in-out infinite",
@@ -113,6 +126,9 @@ const config = {
       };
       addUtilities(newUtilities);
     },
+    require("tailwindcss-animate"),
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/typography"),
   ],
 } satisfies Config;
 

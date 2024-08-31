@@ -176,7 +176,7 @@ const HeroSection = () => {
                 <Image
                   className="rounded-full max-w-[200px] md:max-w-[280px] shadow-glow shadow-primary"
                   src={selectedProduct.image}
-                  alt={`${selectedProduct.name} Image`}
+                  alt={`starbucks product`}
                   width={425}
                   height={425}
                   loading="lazy"
@@ -234,7 +234,7 @@ const HeroSection = () => {
                       key={product.link}
                       className={`pt-1 md:basis-1/3 ${marginLeftClass}`}
                     >
-                      <button
+                      <div
                         onClick={() => handleProductClick(product, index)}
                         className={`${product === selectedProduct
                           ? "bg-primary text-white"
@@ -250,13 +250,14 @@ const HeroSection = () => {
                           height={100}
                         />
                         <span className="line-clamp-2">{product.name}</span>
-                      </button>
+                      </div>
                     </div>
                   );
                 })}
               </div>
             </div>
             <button
+              aria-label="Right arrow button"
               onClick={handleNextSlide}
               className={`mt-4 ${canScrollNext ? "bg-primary hover:bg-primary/80" : "bg-gray-300"
                 } rounded-full`}

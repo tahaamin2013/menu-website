@@ -5,6 +5,8 @@ import siteMetadata from "../utils/siteMetaData";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { cx } from "../utils";
 import Script from "next/script";
+import { Suspense } from "react";
+import Loading from "../components/Loading";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -54,9 +56,8 @@ export default function RootLayout({
         />
         <link
           rel="canonical"
-          href={`${siteMetadata.siteUrl}${
-            typeof window !== "undefined" ? window.location.pathname : ""
-          }`}
+          href={`${siteMetadata.siteUrl}${typeof window !== "undefined" ? window.location.pathname : ""
+            }`}
         />
         <Script
           id="schema-markup"
@@ -64,12 +65,12 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         />
       </head>
-     
+
       <body className={cx("font-mr")}>
-       
 
         {children}
+
       </body>
-    </html>
+    </html >
   );
 }
