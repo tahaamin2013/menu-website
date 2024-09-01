@@ -172,11 +172,11 @@ const HeroSection = () => {
             <div className="ml-0 md:mt-0 mt-5 md:ml-6">
               <Link href={`/${link}`}>
                 <Image
-                  className="rounded-full max-w-[200px] md:max-w-[280px] shadow-glow shadow-primary"
+                  className="rounded-full shadow-glow shadow-primary"
                   src={selectedProduct.image}
                   alt={`starbucks product`}
-                  width={425}
-                  height={425}
+                  width={325}
+                  height={325}
                   loading="lazy"
                 />
               </Link>
