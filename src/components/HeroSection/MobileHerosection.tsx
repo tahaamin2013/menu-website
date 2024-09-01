@@ -59,43 +59,43 @@ const MobileHerosection = () => {
   )
   return (
     <div className='block md:hidden'>
-        <Carousel
-          plugins={[plugin.current]}
-          className="w-full max-w-full"
-        >
-          <div className="w-[300px] absolute -left-[13rem] -bottom-0 h-[200px] bg-orange-300 rounded-full blur-3xl" />
-          <div className="w-[400px] absolute -right-[13rem] top-[10px] h-[307px] bg-[#C0E8A6] rounded-full blur-2xl" />
-          <CarouselContent>
-            {allProducts.map((product, index) => {
-              const link = convertNameToLink(product.name);
-              console.log(link);
-              return (
-                <CarouselItem
-                  key={product.link}
-                  className="flex flex-col gap-2 px-12 py-6 justify-center items-center">
-                  <Image
-                    className="rounded-full"
-                    src={product.image}
-                    alt={`Starbucks Product`}
-                    width={160}
-                    height={100}
-                    loading="lazy"
-                  />
-                  {/* TODO: chage above image */}
-                  <span className="font-bold text-xl text-center">{product.name}</span>
-                  <Link
-                    href={`/${link}`}
-                    className="w-fit px-6 text-white rounded-full bg-primary py-2 text-[15px] duration-500 transition-all"
-                  >
-                    View Price & Calories
-                  </Link>
-                </CarouselItem>
-              );
-            })}
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
+      <Carousel
+        plugins={[plugin.current]}
+        className="w-full max-w-full"
+      >
+        <div className="w-[300px] absolute -left-[13rem] -bottom-0 h-[200px] bg-orange-300 rounded-full blur-3xl" />
+        <div className="w-[400px] absolute -right-[13rem] top-[10px] h-[307px] bg-[#C0E8A6] rounded-full blur-2xl" />
+        <CarouselContent>
+          {allProducts.map((product, index) => {
+            const link = convertNameToLink(product.name);
+            console.log(link);
+            return (
+              <CarouselItem
+                key={product.link}
+                className="flex flex-col gap-2 px-12 py-6 justify-center items-center">
+                <Image
+                  className="rounded-full"
+                  src={product.image}
+                  alt={`Starbucks Product`}
+                  width={160}
+                  height={100}
+                  loading="eager"
+                />
+                {/* TODO: chage above image */}
+                <span className="font-bold text-xl text-center">{product.name}</span>
+                <Link
+                  href={`/${link}`}
+                  className="w-fit px-6 text-white rounded-full bg-primary py-2 text-[15px] duration-500 transition-all"
+                >
+                  View Price & Calories
+                </Link>
+              </CarouselItem>
+            );
+          })}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
     </div>
   );
 };
