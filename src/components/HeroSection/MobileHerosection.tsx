@@ -58,7 +58,7 @@ const MobileHerosection = () => {
     Autoplay({ delay: 3000, stopOnInteraction: true })
   )
   return (
-    <>
+    <div className='block md:hidden'>
       {loading ? (
         <div className="pb-3 items-center px-7 border-b mb-3 block md:hidden">
           <Skeleton className="mb-2 h-[400px] md:mt-2 w-full rounded-xl" />
@@ -102,7 +102,7 @@ const MobileHerosection = () => {
           <CarouselNext />
         </Carousel>
       )}
-    </>
+    </div>
   );
 };
 
