@@ -59,11 +59,6 @@ const MobileHerosection = () => {
   )
   return (
     <div className='block md:hidden'>
-      {loading ? (
-        <div className="pb-3 items-center px-7 border-b mb-3 block md:hidden">
-          <Skeleton className="mb-2 h-[400px] md:mt-2 w-full rounded-xl" />
-        </div>
-      ) : (
         <Carousel
           plugins={[plugin.current]}
           className="w-full max-w-full"
@@ -101,7 +96,6 @@ const MobileHerosection = () => {
           <CarouselPrevious />
           <CarouselNext />
         </Carousel>
-      )}
     </div>
   );
 };
