@@ -6,21 +6,11 @@ import useEmblaCarousel from "embla-carousel-react";
 import { Menu } from "@/lib/menuItems";
 import { ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
-import dynamic from 'next/dynamic';
+import MobileHerosection from "./MobileHerosection";
 import Link from "next/link";
 import GoyButtonforHeroSection from "../GoyButtonforHeroSection";
 
-const MobileHerosection = dynamic(() => import('./MobileHerosection'), {
-  ssr: false,
-});
-
-interface Product {
-  name: string;
-  image: string;
-  link: string;
-}
-
-const convertNameToLink = (name: string): string => {
+const convertNameToLink = (name: string) => {
   return name
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
@@ -31,6 +21,7 @@ const convertNameToLink = (name: string): string => {
     .replace(/^-+|-+$/g, "");
 };
 
+// Shuffle function
 const shuffleArray = <T,>(array: T[]): T[] => {
   const shuffled = [...array];
   for (let i = shuffled.length - 1; i > 0; i--) {
@@ -40,10 +31,10 @@ const shuffleArray = <T,>(array: T[]): T[] => {
   return shuffled;
 };
 
-const HeroSection: React.FC = () => {
+const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedProduct, setSelectedProduct] = useState<Product>(
-    Menu[0].items[0].subItems[0].products[0] as Product
+  const [selectedProduct, setSelectedProduct] = useState(
+    Menu[0].items[0].subItems[0].products[0]
   );
   const [selectedCategory, setSelectedCategory] = useState(Menu[0].items[0]);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
@@ -51,6 +42,7 @@ const HeroSection: React.FC = () => {
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ axis: "y" });
 
+  // Shuffle products
   const allProducts = useMemo(() => {
     const products = Menu.flatMap((category) =>
       category.items.flatMap((item) =>
@@ -69,10 +61,11 @@ const HeroSection: React.FC = () => {
     [emblaApi]
   );
 
-  const handleProductClick = useCallback((product: Product, index: number) => {
+  const handleProductClick = useCallback((product: any, index: number) => {
     setSelectedProduct(product);
     setCurrentIndex(index);
 
+    // Find and set the category based on the selected product
     for (const category of Menu) {
       for (const item of category.items) {
         for (const subItem of item.subItems) {
@@ -83,6 +76,7 @@ const HeroSection: React.FC = () => {
         }
       }
     }
+    // If no category is found, default to the first item
     setSelectedCategory(Menu[0].items[0]);
   }, []);
 
@@ -104,8 +98,9 @@ const HeroSection: React.FC = () => {
     setCanScrollNext(emblaApi.canScrollNext());
     const currentIndex = emblaApi.selectedScrollSnap();
     setCurrentIndex(currentIndex);
-    setSelectedProduct(allProducts[currentIndex] as Product);
+    setSelectedProduct(allProducts[currentIndex]);
 
+    // Update the selected category based on the currently selected product
     for (const category of Menu) {
       for (const item of category.items) {
         for (const subItem of item.subItems) {
@@ -123,14 +118,9 @@ const HeroSection: React.FC = () => {
       emblaApi.on("select", onSelect);
       onSelect();
     }
-    return () => {
-      if (emblaApi) {
-        emblaApi.off("select", onSelect);
-      }
-    };
   }, [emblaApi, onSelect]);
 
-  const link = useMemo(() => convertNameToLink(selectedProduct.name), [selectedProduct.name]);
+  const link = convertNameToLink(selectedProduct.name);
 
   return (
     <section>
@@ -189,8 +179,7 @@ const HeroSection: React.FC = () => {
                   alt={`starbucks product`}
                   width={425}
                   height={425}
-                  priority={true}
-                  loading="eager"
+                  loading="lazy"
                 />
               </Link>
             </div>
@@ -226,7 +215,7 @@ const HeroSection: React.FC = () => {
               ref={emblaRef}
             >
               <div className="-mt-1 h-[300px] lg:h-[370px]">
-                {allProducts.map((product: Product, index: number) => {
+                {allProducts.map((product, index) => {
                   let marginLeftClass = "";
                   switch (index % 3) {
                     case 0:
