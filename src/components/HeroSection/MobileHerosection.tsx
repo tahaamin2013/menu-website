@@ -12,6 +12,7 @@ import {
 import { Menu } from "@/lib/menuItems";
 import Link from "next/link";
 import { Skeleton } from "../ui/skeleton";
+import Autoplay from "embla-carousel-autoplay"
 
 function convertNameToLink(name: any) {
   return name
@@ -53,7 +54,9 @@ const MobileHerosection = () => {
     fetchProducts();
   }, []); // Empty dependency array means this will only run once when the component mounts
   const categoryLink = convertNameToLink(selectedCategory.name);
-
+  const plugin = React.useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: true })
+  )
   return (
     <>
       {loading ? (
@@ -61,7 +64,10 @@ const MobileHerosection = () => {
           <Skeleton className="mb-2 h-[400px] md:mt-2 w-full rounded-xl" />
         </div>
       ) : (
-        <Carousel className="h-[330px] mb-6 lg:hidden block overflow-hidden">
+        <Carousel
+          plugins={[plugin.current]}
+          className="w-full max-w-full"
+        >
           <div className="w-[300px] absolute -left-[13rem] -bottom-0 h-[200px] bg-orange-300 rounded-full blur-3xl" />
           <div className="w-[400px] absolute -right-[13rem] top-[10px] h-[307px] bg-[#C0E8A6] rounded-full blur-2xl" />
           <CarouselContent>
@@ -71,8 +77,7 @@ const MobileHerosection = () => {
               return (
                 <CarouselItem
                   key={product.link}
-                  className="flex flex-col gap-3 items-center px-10 justify-center text-center"
-                >
+                  className="flex flex-col gap-2 px-12 py-6 justify-center items-center">
                   <Image
                     className="rounded-full"
                     src={product.image}
@@ -82,7 +87,7 @@ const MobileHerosection = () => {
                     loading="lazy"
                   />
                   {/* TODO: chage above image */}
-                  <span className="font-bold text-xl">{product.name}</span>
+                  <span className="font-bold text-xl text-center">{product.name}</span>
                   <Link
                     href={`/${link}`}
                     className="w-fit px-6 text-white rounded-full bg-primary py-2 text-[15px] duration-500 transition-all"
@@ -93,6 +98,8 @@ const MobileHerosection = () => {
               );
             })}
           </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
         </Carousel>
       )}
     </>
