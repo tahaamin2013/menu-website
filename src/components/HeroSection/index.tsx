@@ -6,11 +6,21 @@ import useEmblaCarousel from "embla-carousel-react";
 import { Menu } from "@/lib/menuItems";
 import { ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
-import MobileHerosection from "./MobileHerosection";
+import dynamic from 'next/dynamic';
 import Link from "next/link";
 import GoyButtonforHeroSection from "../GoyButtonforHeroSection";
 
-const convertNameToLink = (name: string) => {
+const MobileHerosection = dynamic(() => import('./MobileHerosection'), {
+  ssr: false,
+});
+
+interface Product {
+  name: string;
+  image: string;
+  link: string;
+}
+
+const convertNameToLink = (name: string): string => {
   return name
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
@@ -21,7 +31,6 @@ const convertNameToLink = (name: string) => {
     .replace(/^-+|-+$/g, "");
 };
 
-// Shuffle function
 const shuffleArray = <T,>(array: T[]): T[] => {
   const shuffled = [...array];
   for (let i = shuffled.length - 1; i > 0; i--) {
@@ -31,10 +40,10 @@ const shuffleArray = <T,>(array: T[]): T[] => {
   return shuffled;
 };
 
-const HeroSection = () => {
+const HeroSection: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedProduct, setSelectedProduct] = useState(
-    Menu[0].items[0].subItems[0].products[0]
+  const [selectedProduct, setSelectedProduct] = useState<Product>(
+    Menu[0].items[0].subItems[0].products[0] as Product
   );
   const [selectedCategory, setSelectedCategory] = useState(Menu[0].items[0]);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
@@ -42,7 +51,6 @@ const HeroSection = () => {
 
   const [emblaRef, emblaApi] = useEmblaCarousel({ axis: "y" });
 
-  // Shuffle products
   const allProducts = useMemo(() => {
     const products = Menu.flatMap((category) =>
       category.items.flatMap((item) =>
@@ -61,11 +69,10 @@ const HeroSection = () => {
     [emblaApi]
   );
 
-  const handleProductClick = useCallback((product: any, index: number) => {
+  const handleProductClick = useCallback((product: Product, index: number) => {
     setSelectedProduct(product);
     setCurrentIndex(index);
 
-    // Find and set the category based on the selected product
     for (const category of Menu) {
       for (const item of category.items) {
         for (const subItem of item.subItems) {
@@ -76,7 +83,6 @@ const HeroSection = () => {
         }
       }
     }
-    // If no category is found, default to the first item
     setSelectedCategory(Menu[0].items[0]);
   }, []);
 
@@ -98,9 +104,8 @@ const HeroSection = () => {
     setCanScrollNext(emblaApi.canScrollNext());
     const currentIndex = emblaApi.selectedScrollSnap();
     setCurrentIndex(currentIndex);
-    setSelectedProduct(allProducts[currentIndex]);
+    setSelectedProduct(allProducts[currentIndex] as Product);
 
-    // Update the selected category based on the currently selected product
     for (const category of Menu) {
       for (const item of category.items) {
         for (const subItem of item.subItems) {
@@ -118,9 +123,14 @@ const HeroSection = () => {
       emblaApi.on("select", onSelect);
       onSelect();
     }
+    return () => {
+      if (emblaApi) {
+        emblaApi.off("select", onSelect);
+      }
+    };
   }, [emblaApi, onSelect]);
 
-  const link = convertNameToLink(selectedProduct.name);
+  const link = useMemo(() => convertNameToLink(selectedProduct.name), [selectedProduct.name]);
 
   return (
     <section>
@@ -179,7 +189,8 @@ const HeroSection = () => {
                   alt={`starbucks product`}
                   width={425}
                   height={425}
-                  loading="lazy"
+                  priority={true}
+                  loading="eager"
                 />
               </Link>
             </div>
@@ -215,7 +226,7 @@ const HeroSection = () => {
               ref={emblaRef}
             >
               <div className="-mt-1 h-[300px] lg:h-[370px]">
-                {allProducts.map((product, index) => {
+                {allProducts.map((product: Product, index: number) => {
                   let marginLeftClass = "";
                   switch (index % 3) {
                     case 0:
