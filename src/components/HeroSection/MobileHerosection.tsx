@@ -57,8 +57,6 @@ const MobileHerosection = () => {
   return (
     <>
    page
-     
-      
     </>
   );
 };
