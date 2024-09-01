@@ -55,7 +55,7 @@ const MobileHerosection = () => {
   }, []); // Empty dependency array means this will only run once when the component mounts
   const categoryLink = convertNameToLink(selectedCategory.name);
   const plugin = React.useRef(
-    Autoplay({ delay: 4000, stopOnInteraction: true })
+    Autoplay({ delay: 3000, stopOnInteraction: true })
   )
   return (
     <>
