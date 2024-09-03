@@ -174,10 +174,9 @@ const HeroSection = () => {
                 <Image
                   className="rounded-full shadow-glow shadow-primary"
                   src={selectedProduct.image}
-                  alt={`starbucks product`}
+                  alt={`Starbucks product`}
                   width={325}
                   height={325}
-                  loading="lazy"
                 />
               </Link>
             </div>
