@@ -260,158 +260,164 @@ const MenuPage: React.FC = () => {
   };
 
   return (
-    <div id="Menu">
-      {/* Desktop Navigation */}
-      <div className="hidden sm:block bg-white shadow-md sticky top-0 z-10">
-        <div className="flex xl:flex-col flex-row justify-between items-center">
-          {/* Category Tabs */}
-          <nav className="px-4 py-3 overflow-x-auto whitespace-nowrap border-b border-gray-200">
-            <div className="flex justify-center space-x-3">
-              {Menu.map((category) => (
-                <motion.button
-                  key={category.category}
-                  className={`px-4 py-2 rounded-t-lg text-sm font-bold transition-colors duration-200 ${activeCategory === category.category
-                    ? "bg-green-700 text-white"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                    }`}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => {
-                    setActiveCategory(category.category);
-                    filterProducts(category.category);
-                  }}
-                >
-                  {category.category}
-                </motion.button>
-              ))}
-            </div>
-          </nav>
-          <div className="relative lg:w-[38rem] w-fit">
-            <input
-              type="text"
-              placeholder="Search..."
-              className="w-full px-4 py-2 rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800 placeholder-gray-500"
-              value={searchQuery}
-              onChange={(e) => handleSearch(e.target.value)}
-            />
-            {searchQuery ? (
-              <X
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer"
-                onClick={() => handleSearch("")}
+    <>
+
+      <head>
+        <meta name="google-site-verification" content="XZ6378pxg1MgvmMKS2AW4EkSx1x552QJ42sY9WBfZHI" />
+      </head>
+      <div id="Menu">
+
+        {/* Desktop Navigation */}
+        <div className="hidden sm:block bg-white shadow-md sticky top-0 z-10">
+          <div className="flex xl:flex-col flex-row justify-between items-center">
+            {/* Category Tabs */}
+            <nav className="px-4 py-3 overflow-x-auto whitespace-nowrap border-b border-gray-200">
+              <div className="flex justify-center space-x-3">
+                {Menu.map((category) => (
+                  <motion.button
+                    key={category.category}
+                    className={`px-4 py-2 rounded-t-lg text-sm font-bold transition-colors duration-200 ${activeCategory === category.category
+                      ? "bg-green-700 text-white"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                      }`}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => {
+                      setActiveCategory(category.category);
+                      filterProducts(category.category);
+                    }}
+                  >
+                    {category.category}
+                  </motion.button>
+                ))}
+              </div>
+            </nav>
+            <div className="relative lg:w-[38rem] w-fit">
+              <input
+                type="text"
+                placeholder="Search..."
+                className="w-full px-4 py-2 rounded-full bg-gray-100 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800 placeholder-gray-500"
+                value={searchQuery}
+                onChange={(e) => handleSearch(e.target.value)}
               />
-            ) : (
-              <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
-            )}
+              {searchQuery ? (
+                <X
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer"
+                  onClick={() => handleSearch("")}
+                />
+              ) : (
+                <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
+              )}
+            </div>
           </div>
+
+          {/* Item Tabs */}
+          <AnimatePresence>
+            {activeCategory && (
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                className="py-2 border-b border-green-200"
+              >
+                <div className="container mx-auto px-4 overflow-x-auto py-2 whitespace-nowrap">
+                  <div className="flex space-x-2">
+                    {Menu.find((c) => c.category === activeCategory)?.items.map(
+                      (item) => (
+                        <motion.button
+                          key={item.name}
+                          className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200 ${activeItem === item.name
+                            ? "bg-green-500 text-white"
+                            : "bg-white text-green-700 border border-green-300 hover:bg-green-100"
+                            }`}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={() => {
+                            setActiveItem(item.name);
+                            if (item.subItems.length > 0) {
+                              setActiveSubItem(item.subItems[0].category);
+                              setFilteredProducts(item.subItems[0].products);
+                            }
+                          }}
+                        >
+                          {item.name}
+                        </motion.button>
+                      )
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Sub-Item Tabs */}
+          <AnimatePresence>
+            {activeItem && (
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                className="py-2"
+              >
+                <div className="container mx-auto px-4 overflow-x-auto whitespace-nowrap">
+                  <div className="flex space-x-2">
+                    {Menu.find((c) => c.category === activeCategory)
+                      ?.items.find((i) => i.name === activeItem)
+                      ?.subItems.map((subItem) => (
+                        <motion.button
+                          key={subItem.category}
+                          className={`px-3 py-1 text-xs font-medium transition-colors duration-200 border-b-2 ${activeSubItem === subItem.category
+                            ? "border-green-500 text-green-700"
+                            : "border-transparent text-gray-600 hover:border-gray-300"
+                            }`}
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={() => {
+                            setActiveSubItem(subItem.category);
+                            setFilteredProducts(subItem.products);
+                          }}
+                        >
+                          {subItem.category}
+                        </motion.button>
+                      ))}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
-        {/* Item Tabs */}
-        <AnimatePresence>
-          {activeCategory && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="py-2 border-b border-green-200"
-            >
-              <div className="container mx-auto px-4 overflow-x-auto py-2 whitespace-nowrap">
-                <div className="flex space-x-2">
-                  {Menu.find((c) => c.category === activeCategory)?.items.map(
-                    (item) => (
-                      <motion.button
-                        key={item.name}
-                        className={`px-3 py-1 rounded-full text-sm font-medium transition-colors duration-200 ${activeItem === item.name
-                          ? "bg-green-500 text-white"
-                          : "bg-white text-green-700 border border-green-300 hover:bg-green-100"
-                          }`}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => {
-                          setActiveItem(item.name);
-                          if (item.subItems.length > 0) {
-                            setActiveSubItem(item.subItems[0].category);
-                            setFilteredProducts(item.subItems[0].products);
-                          }
-                        }}
-                      >
-                        {item.name}
-                      </motion.button>
-                    )
-                  )}
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Tablet Navigation */}
+        <div className="hidden md:block lg:hidden">
+          <TabletMenu />
+        </div>
 
-        {/* Sub-Item Tabs */}
-        <AnimatePresence>
-          {activeItem && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="py-2"
-            >
-              <div className="container mx-auto px-4 overflow-x-auto whitespace-nowrap">
-                <div className="flex space-x-2">
-                  {Menu.find((c) => c.category === activeCategory)
-                    ?.items.find((i) => i.name === activeItem)
-                    ?.subItems.map((subItem) => (
-                      <motion.button
-                        key={subItem.category}
-                        className={`px-3 py-1 text-xs font-medium transition-colors duration-200 border-b-2 ${activeSubItem === subItem.category
-                          ? "border-green-500 text-green-700"
-                          : "border-transparent text-gray-600 hover:border-gray-300"
-                          }`}
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => {
-                          setActiveSubItem(subItem.category);
-                          setFilteredProducts(subItem.products);
-                        }}
-                      >
-                        {subItem.category}
-                      </motion.button>
-                    ))}
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+        {/* Mobile Navigation */}
+        <div className="md:hidden">
+          <MobileMenu />
+        </div>
 
-      {/* Tablet Navigation */}
-      <div className="hidden md:block lg:hidden">
-        <TabletMenu />
-      </div>
-
-      {/* Mobile Navigation */}
-      <div className="md:hidden">
-        <MobileMenu />
-      </div>
-
-      {/* Product Grid */}
-      <div className="lg:block hidden container mx-auto px-4 py-8">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-wrap gap-6"
-        >
-          {filteredProducts.map((product, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <ProductLayout subItem={product} delay={index} />
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-    </div>
+        {/* Product Grid */}
+        <div className="lg:block hidden container mx-auto px-4 py-8">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-wrap gap-6"
+          >
+            {filteredProducts.map((product, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <ProductLayout subItem={product} delay={index} />
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </div></>
   );
 };
 

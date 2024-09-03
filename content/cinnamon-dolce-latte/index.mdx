@@ -64,6 +64,9 @@ A grande (16 oz) has 340 calories and 40g sugar. But you can make it lighter:
 | **Protein**             | 6 g            | 9 g         | 12 g     | 15 g     |
 | **Caffeine ★**          | 75 mg          | 75 mg       | 150 mg   | 150 mg   |
 </div>
+★ Caffeine is an approximate value
+
+General nutrition advice uses 2,000 calories a day, but calorie needs vary.
 
 When to Enjoy?
 - Cozy morning treat
@@ -154,3 +157,36 @@ Try this Starbucks cinnamon dolce latte today, or make your own at home. It's a 
   </div>
   <div></div>
 </div>
+
+
+
+<style jsx>{`
+  .table-container {
+    overflow-x: auto;
+    position: relative;
+  }
+  .table-container table {
+    border-collapse: collapse;
+    width: 30%;
+  }
+  .table-container th,
+  .table-container td {
+    border: 1px solid #ddd;
+    padding: 2px;
+    min-width: 30px;
+    font-size: 11px;
+  }
+  .table-container th:first-child,
+  .table-container td:first-child {
+    position: sticky;
+    left: 0;
+    background-color: white;
+    z-index: 1;
+  }
+  @media (max-width: 768px) {
+    .table-container th:not(:first-child),
+    .table-container td:not(:first-child) {
+      min-width: 50px;
+    }
+  }
+`}</style>
