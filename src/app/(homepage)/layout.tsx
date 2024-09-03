@@ -7,7 +7,7 @@ import siteMetadata from "@/src/utils/siteMetaData";
 import HeroSection from "@/src/components/HeroSection";
 import { Suspense } from "react";
 import Loading from "@/src/components/Loading";
-
+import { Analytics } from "@vercel/analytics/react"
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -49,6 +49,7 @@ export default function RootLayout({
 
         <Footer />
         {/* </Loader> */}
+        <Analytics />
       </body>
     </html >
   );
