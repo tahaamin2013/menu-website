@@ -7,7 +7,6 @@ import { cx } from "../utils";
 import Script from "next/script";
 import { Suspense } from "react";
 import Loading from "../components/Loading";
-import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -72,7 +71,6 @@ export default function RootLayout({
         {children}
 
       </body>
-      <Analytics />
     </html >
   );
 }

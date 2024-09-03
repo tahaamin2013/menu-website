@@ -23,7 +23,6 @@
     "@supabase/auth-helpers-nextjs": "^0.7.4",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.13",
-    "@vercel/analytics": "^1.3.1",
     "autoprefixer": "10.4.15",
     "blurhash": "^2.0.5",
     "canvas": "^2.11.2",
