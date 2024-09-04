@@ -22,13 +22,13 @@ const variants = {
 
 function convertNameToLink(name: any) {
   return name
-    .normalize("NFD") // Normalize to separate base characters and diacritics
-    .replace(/[\u0300-\u036f]/g, "") // Remove diacritics
-    .toLowerCase() // Convert to lowercase
-    .replace(/&/g, "and") // Replace & with and
-    .replace(/[®™,.\s]+/g, "-") // Replace ®, ™, comma, dot, and spaces with hyphen
-    .replace(/-+/g, "-") // Replace multiple hyphens with a single hyphen
-    .replace(/^-+|-+$/g, ""); // Remove leading and trailing hyphens
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[®™,.\s]+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-+|-+$/g, "");
 }
 
 const ProductLayout = ({ subItem, delay }: any) => {
@@ -46,20 +46,19 @@ const ProductLayout = ({ subItem, delay }: any) => {
 
   console.log(link);
 
-  // Find the category of the blog
   const findCategory = () => {
     for (let menu of Menu) {
       for (let item of menu.items) {
         for (let subItem of item.subItems) {
           for (let product of subItem.products) {
             if (product.name === productName) {
-              return item.name; // Return the item name (sub-category name)
+              return item.name;
             }
           }
         }
       }
     }
-    return "Unknown Category"; // Default if category not found
+    return "Unknown Category";
   };
 
   const category = findCategory();
@@ -78,10 +77,7 @@ const ProductLayout = ({ subItem, delay }: any) => {
   return (
     <div className="flex gap-8 z-0 flex-col mb-8 md:mb-1 md:flex-row ">
       <div className="flex flex-row mb-6 items-center gap-5">
-        <Link
-          href={`/${link}`}
-          aria-label={`Starbucks ${productName}`}
-        >
+        <Link href={`/${link}`} aria-label={`Starbucks ${productName}`}>
           <Image
             src={subItem.image}
             loading="lazy"
@@ -93,18 +89,11 @@ const ProductLayout = ({ subItem, delay }: any) => {
           />
         </Link>
         <div>
-          <Link
-            href={`/${link}`}
-            aria-label={`Starbucks ${productName}`}
-          >
-            {" "}
+          <Link href={`/${link}`} aria-label={`Starbucks ${productName}`}>
             <h3 className="text-xl mb-1 w-full md:w-[260px]">{productName}</h3>
           </Link>
           <div className="w-44 flex gap-6 justify-between items-center">
-            <Link
-              href={`/${link}`}
-              aria-label={`Starbucks ${productName}`}
-            >
+            <Link href={`/${link}`} aria-label={`Starbucks ${productName}`}>
               <div className="h-full gap-1 font-bold flex justify-between flex-col">
                 {hasSizes && (
                   <>
@@ -124,7 +113,7 @@ const ProductLayout = ({ subItem, delay }: any) => {
               </div>
             </Link>
             <div className="flex flex-col gap-1">
-              {hasSizes ? (
+              {hasSizes && selectedSize ? (
                 <DropdownMenu>
                   <DropdownMenuTrigger
                     className="w-fit cursor-pointer outline-none"
@@ -150,30 +139,23 @@ const ProductLayout = ({ subItem, delay }: any) => {
                           className="cursor-pointer outline-none"
                           key={index}
                           value={sizeOption.size}
-                          aria-checked={selectedSize.size === sizeOption.size} // Ensure proper aria-checked usage
+                          aria-checked={selectedSize.size === sizeOption.size}
                         >
                           {sizeOption.size}
                         </DropdownMenuRadioItem>
                       ))}
                     </DropdownMenuRadioGroup>
-
                   </DropdownMenuContent>
                 </DropdownMenu>
               ) : null}
               {hasSizes && selectedSize ? (
-                <Link
-                  href={`/${link}`}
-                  aria-label={`Starbucks ${productName}`}
-                >
+                <Link href={`/${link}`} aria-label={`Starbucks ${productName}`}>
                   <span>{selectedSize.size2}</span>
                   <p>{selectedSize.calories}</p>
                   <p>{selectedSize.price}</p>
                 </Link>
               ) : (
-                <Link
-                  href={`/${link}`}
-                  aria-label={`Starbucks ${productName}`}
-                >
+                <Link href={`/${link}`} aria-label={`Starbucks ${productName}`}>
                   {subItem.calories !== undefined && <p>{subItem.calories}</p>}
                   {subItem.size !== undefined && <p>{subItem.size}</p>}
                   {subItem.price !== undefined && <p>{subItem.price}</p>}

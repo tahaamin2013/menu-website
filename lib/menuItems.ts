@@ -1,7 +1,7 @@
 export type Size = {
   size: string;
   calories: number;
-  price: string;  
+  price: string;
   size2: string;
 };
 export type Product = {
@@ -321,7 +321,7 @@ export const Menu: Category[] = [
               },
             ],
           },
-         
+
           {
             category: "Cappuccinos",
             products: [
@@ -1366,7 +1366,7 @@ export const Menu: Category[] = [
             products: [
               {
                 name: "Iced Lavender Oatmilk Latte",
-                image: "/Iced Lavender Oatmilk Latte.avif",
+                image: "/Iced Lavender Oatmilk Latte.jpg",
                 sizes: [
                   {
                     size: "Tall",
@@ -2709,7 +2709,7 @@ export const Menu: Category[] = [
             products: [
               {
                 name: "Iced Lavender Cream Oatmilk Matcha",
-                image: "/Iced Lavender Cream Oatmilk Matcha.avif",
+                image: "/Iced Lavender Cream Oatmilk Matcha.jpg",
                 sizes: [
                   {
                     size: "Tall",
