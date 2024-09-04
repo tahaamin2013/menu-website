@@ -53,7 +53,6 @@ const MobileMenu = () => {
             return filteredProducts.map((product) => (
                 <motion.div
                     key={product.name}
-                    className="mb-4 bg-green-100 rounded-lg shadow-lg"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
@@ -67,14 +66,14 @@ const MobileMenu = () => {
             return Menu.find((c) => c.category === activeCategory)?.items.map((item, index) => (
                 <motion.div
                     key={item.name}
-                    className="mb-4 bg-green-100 rounded-lg shadow-lg"
+                    className="mb-4 rounded-lg shadow-lg"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     ref={(el) => (itemRefs.current[item.name] = el)}
                 >
                     <motion.button
-                        className="sticky top-[140px] w-full p-4 text-left text-lg font-medium text-green-800 flex justify-between items-center bg-green-100"
+                        className="top-[140px] w-full p-4 text-left text-lg font-medium text-green-800 flex justify-between items-center bg-green-100"
                         onClick={() => toggleAccordion(item.name)}
                     >
                         {item.name}
