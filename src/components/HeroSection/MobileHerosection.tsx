@@ -59,7 +59,7 @@ const MobileHerosection = () => {
     <div className='block md:hidden'>
       <Carousel
         plugins={[plugin.current]}
-        className="w-full max-w-full"
+        className="w-full overflow-x-hidden max-w-full"
       >
         <div className="w-[300px] absolute -left-[13rem] -bottom-0 h-[200px] bg-orange-300 rounded-full blur-3xl" />
         <div className="w-[400px] absolute -right-[13rem] top-[10px] h-[307px] bg-[#C0E8A6] rounded-full blur-2xl" />
