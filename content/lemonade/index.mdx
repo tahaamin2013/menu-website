@@ -3,58 +3,161 @@ title: "Starbucks Lemonade Price & Calories"
 ProductName: "Lemonade" 
 description: "Master Alight Motion Pro for seamless video editing on Android, iOS, and Tablets with our ultimate guide, unlocking advanced features and elevating your skills in 2024!"
 image: "../../public/blogs/alightmotion/Alight Motion Image 1.png"
-publishedAt: "2024-06-21"
-updatedAt: "2024-06-21"
+publishedAt: "2024-09-04"
+updatedAt: "2024-09-04"
 author: "Amin Ahsan"
 isPublished: true
 tags:
- 
 - Starbucks
-      
 ---
 
 ## Lemonade 
   
-<div className="tables-container">
-  <div className="table-wrapper">
-    | Ingredients  |
-    |:-------------|
-    | LEMONADE [WATER, LEMON JUICE, SUGAR, LEMON OIL] |
-    | ICE          |
-  </div>
-  <div className="table-wrapper">
-    | Nutrition               |                      |  
-    |:------------------------|---------------------:|
-    | Calories                | 120                   |
-    | Total Fat               | 0 g                  |
-    | Saturated Fat           | 0 g                  |
-    | Trans Fat               | 0 g                  |
-    | Cholesterol             | 0 mg                 |
-    | Sodium                  | 10 mg                |
-    | Total Carbohydrates     | 28 g                 |
-    | Dietary Fiber           | 0 g                  |
-    | Sugars                  | 27 g                 |
-    | Protein                 | 0 g                  |
-    | Caffeine                | 0 mg                |
-  </div>
-</div>
+  Hey there, lemonade lovers! Ever had one of those days when life gives you lemons? Well, forget about making lemonade yourself - Starbucks has got you covered!
+
+You might be thinking, "It's just lemonade, right?" Wrong! This isn't your grandma's lemonade or the stuff from that lemonade stand where a duck might waddle up. This is Starbucks Lemonade we're talking about!
+1. It's super refreshing
+2. Perfect for any time of day
+3. Customizable (because you're the boss!)
+
+It's simple and delicious:
+- Water (duh!)
+- Lemon juice (fresh and tangy)
+- Sugar (just enough to make you smile)
+- Lemon oil (for that extra oomph!)
+And don't forget the ice - you can have it normal, light, extra, or none at all. It's your world!
+
+Unlike that one-hit-wonder band Lemonade Mouth, Starbucks lets you be the star. Want it sweeter? Just ask! Prefer it tart? They've got you!
+
+When to Grab This Citrus Sensation
+- Feeling hot? Lemonade time!
+- Need a pick-me-up? Lemonade to the rescue!
+- Just because? Yep, lemonade works for that, too!
+
+For all you calorie counters out there, a Grande (that's 16 oz for non-Starbucks speakers) has:
+- 120 calories
+- 27g sugar
+- 0g fat
+Not bad for a treat that feels like a cheat!
+
+Ever wondered about pink lemonade? It's not from pink lemons (sorry to burst your bubble). It's usually regular lemonade with added fruity flavors or colors. But stick with Starbucks' classic - it's a real crowd-pleaser!
+
+So next time you're at Starbucks and can't decide what to get, why not give their lemonade a shot? It's not as strong as Mike's Hard Lemonade (which is about 5% alcohol, by the way), but it's 100% delicious!
+
+Remember, when life gives you lemons, forget the hassle of making lemonade yourself. Just head to Starbucks and let them do the work for you!
+
+Now, who's thirsty?
+
 
 <style jsx>{`
-  .tables-container {
-    display: flex;
-    flex-direction: row;
-    gap: 30px;
+  .table-container {
+    overflow-x: auto;
+    position: relative;
   }
-  .table-wrapper {
-    width: 500px; /* Adjust as needed */
+  .table-container table {
+    border-collapse: collapse;
+    width: 80%;
+  }
+  .table-container th,
+  .table-container td {
+    border: 1px solid #ddd;
+    padding: 2px;
+    min-width: 30px;
+    font-size: 11px;
+  }
+  .table-container th:first-child,
+  .table-container td:first-child {
+    position: sticky;
+    left: 0;
+    background-color: white;
+    z-index: 1;
   }
   @media (max-width: 768px) {
-    .tables-container {
-      flex-direction: column;
-      gap: 0px; /* Adjust as needed */
-    }
-    .table-wrapper {
-      width: 100%; /* Adjust as needed */
+    .table-container th:not(:first-child),
+    .table-container td:not(:first-child) {
+      min-width: 50px;
     }
   }
 `}</style>
+
+ <style jsx>{`
+  @media (min-width: 768px) {
+    .responsive-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+`}</style>
+
+<div
+  style={{
+    backgroundColor: "#cee3de",
+    borderLeft: "3px solid #0c7556",
+   padding: "20px",
+    paddingTop: "13px", // Add padding to the top
+        display: "grid",
+        height: "fit-content",
+      }} 
+      
+  class="responsive-grid"
+
+>
+    <div>
+      <h3>Starbucks Lemonade Price</h3>
+      <p>
+        Starbucks offers a variety of coffee cup sizes, the prices are as follows:
+      </p>
+      <table
+        style={{
+          backgroundColor: "white",
+          width: "100%",
+          padding: "20px",
+          borderCollapse: "collapse",
+              borderRadius: "13px",
+          
+        }}
+      >
+        <thead>
+          <tr>
+            <th style={{ padding: "8px 24px", textAlign: "left" }}>Size</th>
+            <th style={{ padding: "8px 24px", textAlign: "left" }}>Volume</th>
+            <th style={{ padding: "8px 24px", textAlign: "left" }}>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>Kids</td>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>8 fl oz</td>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>$2.75</td>
+          </tr>
+          <tr>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>Tall</td>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>12 fl oz</td>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>$3.25</td>
+          </tr>
+          <tr>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>Grande</td>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>16 fl oz</td>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>$3.65</td>
+          </tr>
+          <tr>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>Venti</td>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>20 fl oz</td>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>$3.95</td>
+          </tr>
+              <tr>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>Trenta</td>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>30 fl oz</td>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>$4.95</td>
+          </tr>
+           
+        </tbody>
+      </table>
+      <p>
+        These prices apply particularly to the United States and are for the year
+        2024.
+      </p>
+    </div>
+    {    /* <div>Ad Will Show Here</div> */}
+    <div></div>
+  </div>

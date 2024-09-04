@@ -3,8 +3,8 @@ title: "Starbucks Chai Tea Price & Calories"
 ProductName: "Chai Tea" 
 description: "Master Alight Motion Pro for seamless video editing on Android, iOS, and Tablets with our ultimate guide, unlocking advanced features and elevating your skills in 2024!"
 image: "../../public/blogs/alightmotion/Alight Motion Image 1.png"
-publishedAt: "2024-09-03"
-updatedAt: "2024-09-03"
+publishedAt: "2024-09-04"
+updatedAt: "2024-09-04"
 author: "Amin Ahsan"
 isPublished: true
 tags:
@@ -108,3 +108,109 @@ Remember, chai tea isn't a drink - it's an adventure for your taste buds. So go 
     }
   }
 `}</style>
+
+<style jsx>{`
+  .table-container {
+    overflow-x: auto;
+    position: relative;
+  }
+  .table-container table {
+    border-collapse: collapse;
+    width: 80%;
+  }
+  .table-container th,
+  .table-container td {
+    border: 1px solid #ddd;
+    padding: 2px;
+    min-width: 30px;
+    font-size: 11px;
+  }
+  .table-container th:first-child,
+  .table-container td:first-child {
+    position: sticky;
+    left: 0;
+    background-color: white;
+    z-index: 1;
+  }
+  @media (max-width: 768px) {
+    .table-container th:not(:first-child),
+    .table-container td:not(:first-child) {
+      min-width: 50px;
+    }
+  }
+`}</style>
+
+ <style jsx>{`
+  @media (min-width: 768px) {
+    .responsive-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+`}</style>
+
+<div
+  style={{
+    backgroundColor: "#cee3de",
+    borderLeft: "3px solid #0c7556",
+   padding: "20px",
+    paddingTop: "13px", // Add padding to the top
+        display: "grid",
+        height: "fit-content",
+      }} 
+      
+  class="responsive-grid"
+
+>
+    <div>
+      <h3>Starbucks Chai Tea Price</h3>
+      <p>
+        Starbucks offers a variety of coffee cup sizes, the prices are as follows:
+      </p>
+      <table
+        style={{
+          backgroundColor: "white",
+          width: "100%",
+          padding: "20px",
+          borderCollapse: "collapse",
+              borderRadius: "13px",
+          
+        }}
+      >
+        <thead>
+          <tr>
+            <th style={{ padding: "8px 24px", textAlign: "left" }}>Size</th>
+            <th style={{ padding: "8px 24px", textAlign: "left" }}>Volume</th>
+            <th style={{ padding: "8px 24px", textAlign: "left" }}>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>Shot</td>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>8 fl oz</td>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>$2.85</td>
+          </tr>     <tr>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>Tall</td>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>12 fl oz</td>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>$2.95</td>
+          </tr>
+          <tr>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>Grande</td>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>16 fl oz</td>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>$3.45</td>
+          </tr>
+          <tr>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>Venti</td>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>20 fl oz</td>
+            <td style={{ padding: "8px 24px", textAlign: "left" }}>$3.85</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        These prices apply particularly to the United States and are for the year
+        2024.
+      </p>
+    </div>
+    {    /* <div>Ad Will Show Here</div> */}
+    <div></div>
+  </div>
