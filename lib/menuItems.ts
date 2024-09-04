@@ -4766,7 +4766,7 @@ export const Menu: Category[] = [
         link: "other",
         subItems: [
           {
-            category: "Water Bottles",
+            category: "Other",
             products: [
               {
                 name: "French Press",
