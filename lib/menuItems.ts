@@ -3066,7 +3066,7 @@ export const Menu: Category[] = [
                     size: "Venti",
                     price: "$6.25",
                     calories: 260,
-                    size2: "20 fl oz",
+                    size2: "24 fl oz",
                   },
                 ],
                 link: "Blended-Strawberry-Lemonade",
