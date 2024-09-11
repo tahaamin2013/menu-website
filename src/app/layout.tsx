@@ -50,8 +50,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9571755808195636"
-          crossOrigin="anonymous"></script>
+        {/* <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9571755808195636"
+          crossOrigin="anonymous"></script> */}
         <meta name="theme-color" content="#0b7555" />
         <meta
           property="og:image"
@@ -74,7 +74,7 @@ export default function RootLayout({
         {children}
 
       </body>
-      {/* <GoogleAdsense pId="9571755808195636" /> */}
+      <GoogleAdsense pId="9571755808195636" />
     </html >
   );
 }
