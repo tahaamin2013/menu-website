@@ -2,6 +2,7 @@ import CategoryPageComponent from "@/src/components/Category/CategoryPageCompone
 import React from "react";
 import siteMetadata from "@/src/utils/siteMetaData";
 import { Metadata } from "next";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: `${siteMetadata.title} - Frappuccino® Blended Beverages`,
@@ -21,10 +22,15 @@ export const metadata: Metadata = {
 
 const FrappuccinoBlendedBeverages = () => {
   return (
-    <CategoryPageComponent
-      name="Frappuccino® Blended Beverages"
-      link="/frappuccino-blended-beverages"
-    />
+    <div>
+      <Head>
+        <link rel="canonical" href="https://starbucks-menu-with-prices.net/frappuccino-blended-beverages" />
+      </Head>
+      <CategoryPageComponent
+        name="Frappuccino® Blended Beverages"
+        link="/frappuccino-blended-beverages"
+      />
+    </div>
   );
 };
 

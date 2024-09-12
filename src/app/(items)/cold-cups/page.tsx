@@ -2,6 +2,7 @@ import CategoryPageComponent from "@/src/components/Category/CategoryPageCompone
 import React from "react";
 import siteMetadata from "@/src/utils/siteMetaData";
 import { Metadata } from "next";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: `${siteMetadata.title} - Cold Cups`,
@@ -20,7 +21,13 @@ export const metadata: Metadata = {
 };
 
 const ColdCups = () => {
-  return <CategoryPageComponent name="Cold Cups" link="/cold-cups" />;
+  return (<div>
+    <Head>
+      <link rel="canonical" href="https://starbucks-menu-with-prices.net/cold-cups" />
+    </Head>
+    <CategoryPageComponent name="Cold Cups" link="/cold-cups" />
+    </div>
+    );
 };
 
 export default ColdCups;

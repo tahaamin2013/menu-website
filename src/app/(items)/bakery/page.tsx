@@ -1,6 +1,7 @@
 import CategoryPageComponent from "@/src/components/Category/CategoryPageComponent";
 import siteMetadata from "@/src/utils/siteMetaData";
 import { Metadata } from "next";
+import Head from "next/head";
 import React from "react";
 
 export const metadata: Metadata = {
@@ -20,7 +21,12 @@ export const metadata: Metadata = {
 };
 
 const Bakery = () => {
-  return <CategoryPageComponent name="Bakery" link="/bakery" />;
+  return (<div>
+    <Head>
+      <link rel="canonical" href="https://starbucks-menu-with-prices.net/bakery" />
+    </Head>
+    <CategoryPageComponent name="Bakery" link="/bakery" />
+  </div>);
 };
 
 export default Bakery;

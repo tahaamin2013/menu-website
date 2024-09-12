@@ -2,6 +2,7 @@ import CategoryPageComponent from "@/src/components/Category/CategoryPageCompone
 import React from "react";
 import siteMetadata from "@/src/utils/siteMetaData";
 import { Metadata } from "next";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: `${siteMetadata.title} - Mugs`,
@@ -20,7 +21,14 @@ export const metadata: Metadata = {
 };
 
 const Mugs = () => {
-  return <CategoryPageComponent name="Mugs" link="/mugs" />;
+  return (
+      <div>
+        <Head>
+        <link rel="canonical" href="https://starbucks-menu-with-prices.net/mugs" />
+        </Head>
+        <CategoryPageComponent name="Mugs" link="/mugs" />;
+        </div>
+        )
 };
 
 export default Mugs;

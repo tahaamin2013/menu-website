@@ -4,6 +4,7 @@ import BlogReader from "@/src/components/Blog/BlogReader/BlogReading";
 import siteMetadata from "@/src/utils/siteMetaData";
 import { allBlogs } from "contentlayer/generated";
 import Link from "next/link";
+import Head from "next/head";
 
 const ScrollProgressBar = dynamic(
   () => import("@/src/components/Blog/BlogReader/ScrollProgressBar"),
@@ -45,27 +46,21 @@ const BlogPage = ({ params }: BlogPageProps) => {
   if (!blog) {
     return (
       <div>
-        {" "}
         <div className="relative flex flex-col items-center justify-center">
           <h1
-            className={`inline-block text-dark dark:text-light
-      text-6xl font-bold w-full capitalize xl:text-8xl text-center`}
+            className={`inline-block text-dark dark:text-light text-6xl font-bold w-full capitalize xl:text-8xl text-center`}
           >
             404
           </h1>
           <h2
-            className={`inline-block text-dark dark:text-light
-      text-5xl font-bold w-full capitalize xl:text-6xl text-center mt-4 tracking-wide leading-snug`}
+            className={`inline-block text-dark dark:text-light text-5xl font-bold w-full capitalize xl:text-6xl text-center mt-4 tracking-wide leading-snug`}
           >
             Page Not Found!
           </h2>
           <Link
             aria-label="Starbucks Home"
             href="/"
-            className="self-center mt-8 inline-block rounded-lg border-2 border-solid bg-dark px-4 py-2
-        font-semibold text-light hover:border-dark hover:bg-light hover:text-dark 
-        dark:bg-light dark:text-dark hover:dark:bg-dark hover:dark:text-light hover:dark:border-light
-        "
+            className="self-center mt-8 inline-block rounded-lg border-2 border-solid bg-dark px-4 py-2 font-semibold text-light hover:border-dark hover:bg-light hover:text-dark dark:bg-light dark:text-dark hover:dark:bg-dark hover:dark:text-light hover:dark:border-light"
           >
             Go To Home
           </Link>
@@ -93,8 +88,14 @@ const BlogPage = ({ params }: BlogPageProps) => {
     ],
   };
 
+  // Construct the canonical URL based on the slug
+  const canonicalUrl = `https://starbucks-menu-with-prices.net/${params.slug}`;
+
   return (
     <>
+      <Head>
+        <link rel="canonical" href={canonicalUrl} />
+      </Head>
       <ScrollProgressBar />
       <script
         type="application/ld+json"

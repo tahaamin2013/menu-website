@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 
@@ -15,6 +16,9 @@ export const metadata: Metadata = {
 const TermsAndConditions = () => {
   return (
     <div className=" px-[20px] max-w-4xl  mx-auto py-4 mt-6 ">
+      <Head>
+        <link rel="canonical" href="https://starbucks-menu-with-prices.net/terms-and-conditions" />
+      </Head>
       <h1 className="text-center font-bold text-3xl mb-3">
         Terms and Conditions
       </h1>

@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import ProductLayout from "@/src/components/StarbucksProduct/ProductLayout";
 import MobileMenus from "./MobileMenu";
+import Head from "next/head";
 
 const MenuPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -156,7 +157,9 @@ const MenuPage: React.FC = () => {
 
   return (
     <div id="Menu">
-
+      <Head>
+        <link rel="canonical" href="https://starbucks-menu-with-prices.net/" />
+      </Head>
       {/* Desktop Navigation */}
       <div className="hidden sm:block bg-white shadow-md sticky top-0 z-10">
         <div className="flex xl:flex-col flex-row justify-between items-center">

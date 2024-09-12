@@ -2,6 +2,7 @@ import CategoryPageComponent from "@/src/components/Category/CategoryPageCompone
 import React from "react";
 import siteMetadata from "@/src/utils/siteMetaData";
 import { Metadata } from "next";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: `${siteMetadata.title} - Water Bottles`,
@@ -20,7 +21,13 @@ export const metadata: Metadata = {
 };
 
 const WholeBean = () => {
-  return <CategoryPageComponent name="Whole Bean" link="/whole-bean" />;
+  return (
+    <div>
+      <Head>
+        <link rel="canonical" href="https://starbucks-menu-with-prices.net/whole-bean" />
+      </Head>
+      <CategoryPageComponent name="Whole Bean" link="/whole-bean" />
+    </div>);
 };
 
 export default WholeBean;

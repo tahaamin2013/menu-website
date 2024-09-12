@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Head from "next/head";
 import Link from "next/link";
 import React from "react";
 
@@ -16,6 +17,9 @@ export const metadata: Metadata = {
 const AboutUs = () => {
   return (
     <div className="max-w-7xl mx-auto p-8 bg-white shadow-lg rounded-lg">
+      <Head>
+        <link rel="canonical" href="https://starbucks-menu-with-prices.net/about-us" />
+      </Head>
       <h1 className="text-4xl font-bold mb-6 text-center text-green-700">
         About Us
       </h1>

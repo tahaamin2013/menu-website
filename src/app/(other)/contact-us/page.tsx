@@ -5,6 +5,7 @@ import { Input } from '@/src/components/ui/input';
 import { Label } from '@/src/components/ui/label';
 import { Textarea } from '@/src/components/ui/textarea';
 import { Button } from '@/src/components/ui/button';
+import Head from 'next/head';
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -30,9 +31,9 @@ export default function ContactForm() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            name: formData.name,
+          name: formData.name,
           email: formData.email,
-        //   message: `Name: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}`,
+          //   message: `Name: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}`,
           message: `${formData.message}`,
         }),
       });
@@ -52,6 +53,9 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="w-full my-6 border max-w-md mx-auto bg-white p-8 rounded-lg shadow-lg">
+      <Head>
+        <link rel="canonical" href="https://starbucks-menu-with-prices.net/contact-us" />
+      </Head>
       <div className="mb-6">
         <Label htmlFor="name" className="block text-gray-700 font-medium mb-2">Name</Label>
         <Input

@@ -70,6 +70,7 @@ const Featured = () => {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaMarkup) }}
         />
+          <link rel="canonical" href="https://starbucks-menu-with-prices.net/featured" />
       </Head>
       <div>
         <h1 className="font-bold text-4xl md:text-6xl text-center mt-4">
