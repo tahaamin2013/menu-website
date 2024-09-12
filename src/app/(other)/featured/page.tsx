@@ -1,6 +1,5 @@
 import Feetured from "@/src/components/Featured";
 import Head from "next/head";
-import Image from "next/image";
 import React from "react";
 
 const Featured = () => {
@@ -12,7 +11,7 @@ const Featured = () => {
     "url": "https://starbucks-menu-with-prices.net/featured",
     "isPartOf": {
       "@type": "WebSite",
-      "name": "StarbMenu",
+      "name": "Starbucks Menu With Prices",
       "url": "https://starbucks-menu-with-prices.net/"
     },
     "mainEntity": {
@@ -47,6 +46,18 @@ const Featured = () => {
           "position": 5,
           "name": "New Pineapple Cloud Cake",
           "description": "An airy cake layered with lightweight pineapple cream and pineapple spread with whole fruit pieces."
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "Vanilla Sweet Cream Cold Brew",
+          "description": "Our slow-steeped custom blend of Starbucks® Cold Brew Coffee accented with vanilla and topped with a delicate float of house-made vanilla sweet cream."
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "name": "Iced Brown Sugar Oatmilk Shaken Espresso",
+          "description": "Rich espresso shaken with brown sugar and cinnamon, topped with oatmilk."
         }
       ]
     }
@@ -111,6 +122,24 @@ const Featured = () => {
           title="New Pineapple Cloud Cake"
           description="An airy cake layered with lightweight pineapple cream and pineapple spread with whole fruit pieces."
           bg="#fad4aa"
+        />
+        <Feetured
+          borderButton="#ececec"
+          color="#ececec"
+          direction="Right"
+          imageSrc="/Starbucks Vanilla Sweet Cream Cold Brew.webp"
+          title="Vanilla Sweet Cream Cold Brew"
+          description="Our slow-steeped custom blend of Starbucks® Cold Brew Coffee accented with vanilla and topped with a delicate float of house-made vanilla sweet cream."
+          bg="#cfdde5"
+        />
+        <Feetured
+          borderButton="#1e3932"
+          color="#1e3932"
+          direction="Left"
+          imageSrc="/Starbucks Iced Brown Sugar Oatmilk Shaken Espresso.webp"
+          title="Iced Brown Sugar Oatmilk Shaken Espresso"
+          description="Rich espresso shaken with brown sugar and cinnamon, topped with oatmilk."
+          bg="#ebdbb2"
         />
         <div className="mb-9"></div>
       </div>
