@@ -12,7 +12,7 @@ import GoogleAdsense from "../components/GoogleAdsense";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Starbucks Menu With Prices 2024 | Starbucks Menu",
+  title: "Starbucks Menu With Prices 2024 | Starbucks Prices United States",
   description: siteMetadata.description,
   openGraph: {
     title: siteMetadata.title,
