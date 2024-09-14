@@ -35,7 +35,7 @@ export default function RootLayout({
   const schemaMarkup = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Starbucks Menu With Prices",
+    name: "Starbucks Menu With Prices 2024 | Starbucks Menu",
     url: "https://starbucks-menu-with-prices.net/",
     potentialAction: {
       "@type": "SearchAction",

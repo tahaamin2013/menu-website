@@ -3241,7 +3241,7 @@ export const Menu: Category[] = [
                     size2: "20 fl oz",
                   },
                 ],
-                link: "Royal-English-breakfast-tea-latte",
+                link: "royal-english-breakfast-latte",
               },
             ],
           },
