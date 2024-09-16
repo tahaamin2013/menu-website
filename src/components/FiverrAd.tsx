@@ -90,7 +90,7 @@ const FiverrSellerProfile = () => {
                     <p className="text-gray-600 text-[13px]">Welcome to Excel Guru Hub! With 15+ years of expertise, I provide tailored Excel solutions. Contact me for top-notch services!</p>
 
                     <Link itemProp='url' target='_blank' href='https://www.fiverr.com/excelguruhub' rel="nofollow" className="mt-2 w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">
-                        Check out my Gigs
+                        Check out our gigs
                     </Link>
 
                 </div>
