@@ -41,11 +41,13 @@ export default function RootLayout({
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
+        // urlTemplate: "https://starbucks-menu-with-prices.net/?s={search_term_string}",
         urlTemplate: "https://starbucks-menu-with-prices.net/",
       },
-      "query-input": "required name=search_term_string",
+      // "query-input": "required name=search_term_string",
     },
   };
+
 
   return (
     <html lang="en">
