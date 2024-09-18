@@ -35,7 +35,7 @@ export async function generateMetadata({
     openGraph: {
       title: blog.title,
       description: blog.description || siteMetadata.description,
-      images: siteMetadata.socialBanner,
+      images: siteMetadata.socialBanner, // Using socialBanner here
     },
   };
 }
@@ -74,9 +74,7 @@ const BlogPage = ({ params }: BlogPageProps) => {
     "@type": "NewsArticle",
     headline: blog.title,
     description: blog.description,
-    image: blog.image
-      ? [siteMetadata.siteUrl + blog.image.filePath.replace("../public", "")]
-      : [siteMetadata.socialBanner],
+    image: [siteMetadata.socialBanner], // Add socialBanner here
     datePublished: new Date(blog.publishedAt).toISOString(),
     dateModified: new Date(blog.updatedAt || blog.publishedAt).toISOString(),
     author: [
@@ -86,9 +84,13 @@ const BlogPage = ({ params }: BlogPageProps) => {
         url: "https://www.linkedin.com/in/amin-ahsan-b10a7822/",
       },
     ],
+    potentialAction: { // Adding potentialAction for Sitelinks Searchbox
+      "@type": "SearchAction",
+      "target": `${siteMetadata.siteUrl}?s={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
   };
 
-  // Construct the canonical URL based on the slug
   const canonicalUrl = `https://starbucks-menu-with-prices.net/${params.slug}`;
 
   return (
