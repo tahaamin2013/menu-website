@@ -68,7 +68,6 @@ const BlogPage = ({ params }: BlogPageProps) => {
       </div>
     );
   }
-
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "NewsArticle",
