@@ -83,11 +83,11 @@ const BlogPage = ({ params }: BlogPageProps) => {
         url: "https://www.linkedin.com/in/amin-ahsan-b10a7822/",
       },
     ],
-    potentialAction: { // Adding potentialAction for Sitelinks Searchbox
+    "potentialAction": {
       "@type": "SearchAction",
-      "target": `${siteMetadata.siteUrl}?s={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
+      "target": "https://starbucks-menu-with-prices.net/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
   };
 
   const canonicalUrl = `https://starbucks-menu-with-prices.net/${params.slug}`;
