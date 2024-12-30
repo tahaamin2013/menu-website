@@ -36,13 +36,13 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Starbucks Menu With Prices 2024 | Starbucks Menu",
-    url: "https://starbucks-menu-with-prices.net/",
+    url: "https://starbmenu.com/",
     potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        // urlTemplate: "https://starbucks-menu-with-prices.net/?s={search_term_string}",
-        urlTemplate: "https://starbucks-menu-with-prices.net/",
+        // urlTemplate: "https://starbmenu.com/?s={search_term_string}",
+        urlTemplate: "https://starbmenu.com/",
       },
       // "query-input": "required name=search_term_string",
     },
@@ -55,9 +55,10 @@ export default function RootLayout({
         {/* <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9571755808195636"
           crossOrigin="anonymous"></script> */}
         <meta name="theme-color" content="#0b7555" />
+        <meta name="google-site-verification" content="AyrkZRiQQMBOscFl6q2nXT3_q7aK-S4DI8l_lSNK0Fc" />
         <meta
           property="og:image"
-          content="https://starbucks-menu-with-prices.net/opengraph-image.png"
+          content="https://starbmenu.com/opengraph-image.png"
         />
         <link
           rel="canonical"
