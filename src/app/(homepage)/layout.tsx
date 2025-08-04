@@ -29,7 +29,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-      <meta name="google-site-verification" content="AyrkZRiQQMBOscFl6q2nXT3_q7aK-S4DI8l_lSNK0Fc" />        <meta name="theme-color" content="#0b7555" />
+      <meta name="google-site-verification" content="AyrkZRiQQMBOscFl6q2nXT3_q7aK-S4DI8l_lSNK0Fc" />  
+       <meta name="theme-color" content="#0b7555" />
       </head>
       <body className={inter.className}>
         {/* <Loader> */}

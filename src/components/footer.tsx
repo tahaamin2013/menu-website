@@ -288,6 +288,12 @@ const Footer = () => {
                     About Us
                   </Link>
                 </li>
+                <li>
+  <a href="https://calculateatar.com" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-500">
+    For Calculate your ATAR
+  </a>
+</li>
+
               </ul>
             </div>
           </div>
